@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alsace &amp; Moselle · 12 to 16 August 2026</title>
+<style>
+  :root{
+    --ink:#1c1a17;
+    --ink-soft:#5b544c;
+    --line:#e2dcd2;
+    --paper:#faf7f2;
+    --card:#ffffff;
+    --wine:#7b1e3a;
+    --wine-soft:#f4e7ea;
+    --green:#3f6b4a;
+    --green-soft:#e8f0e9;
+    --amber:#9a6212;
+    --amber-soft:#fbf0dd;
+    --blue:#2a4d6e;
+    --blue-soft:#e7eef4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:940px;margin:0 auto;padding:0 24px 80px}
+
+  /* ---------- header ---------- */
+  header{
+    background:linear-gradient(150deg,#7b1e3a 0%,#5c1730 55%,#3a1220 100%);
+    color:#fff;
+    padding:56px 24px 48px;
+    margin-bottom:40px;
+  }
+  header .inner{max-width:940px;margin:0 auto}
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:.18em;
+    font-size:11px;
+    opacity:.75;
+    margin-bottom:14px;
+  }
+  h1{
+    font-size:clamp(30px,5vw,46px);
+    font-weight:700;
+    letter-spacing:-.02em;
+    line-height:1.12;
+    margin-bottom:14px;
+  }
+  .sub{font-size:17px;opacity:.85;max-width:620px}
+  .stats{
+    display:flex;flex-wrap:wrap;gap:32px;
+    margin-top:32px;padding-top:26px;
+    border-top:1px solid rgba(255,255,255,.22);
+  }
+  .stat .n{font-size:26px;font-weight:700;line-height:1.1}
+  .stat .l{font-size:11px;text-transform:uppercase;letter-spacing:.12em;opacity:.7;margin-top:4px}
+
+  /* ---------- verdict ---------- */
+  .verdict{
+    background:var(--green-soft);
+    border-left:4px solid var(--green);
+    border-radius:0 10px 10px 0;
+    padding:22px 26px;
+    margin-bottom:36px;
+  }
+  .verdict h2{font-size:17px;color:var(--green);margin-bottom:8px}
+  .verdict p{font-size:15px;color:#33503b}
+  .verdict p + p{margin-top:10px}
+
+  /* ---------- section ---------- */
+  h2.sec{
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    color:var(--ink-soft);
+    margin:48px 0 20px;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--line);
+  }
+  h2.sec:first-of-type{margin-top:0}
+
+  /* ---------- days ---------- */
+  .day{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:24px 26px;
+    margin-bottom:16px;
+  }
+  .day-head{
+    display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+    padding-bottom:14px;margin-bottom:16px;
+    border-bottom:1px solid var(--line);
+  }
+  .badge{
+    background:var(--wine);color:#fff;
+    font-size:11px;font-weight:700;
+    letter-spacing:.1em;text-transform:uppercase;
+    padding:5px 11px;border-radius:20px;
+    white-space:nowrap;
+  }
+  .day-head h3{font-size:20px;font-weight:700;letter-spacing:-.01em}
+  .drive{
+    margin-left:auto;
+    font-size:12px;color:var(--ink-soft);
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:4px 10px;border-radius:6px;
+    white-space:nowrap;
+  }
+  .day p.lead{color:var(--ink-soft);font-size:15px;margin-bottom:14px}
+
+  ul.sched{list-style:none}
+  ul.sched li{
+    display:flex;gap:16px;
+    padding:8px 0;
+    border-top:1px dotted var(--line);
+    font-size:15px;
+  }
+  ul.sched li:first-child{border-top:none}
+  ul.sched .t{
+    flex:0 0 62px;
+    font-variant-numeric:tabular-nums;
+    font-weight:700;color:var(--wine);font-size:14px;
+    padding-top:1px;
+  }
+  ul.sched .d strong{font-weight:600}
+  ul.sched .d span{color:var(--ink-soft)}
+
+  .sleep{
+    margin-top:16px;padding-top:14px;
+    border-top:1px solid var(--line);
+    font-size:14px;color:var(--ink-soft);
+  }
+  .sleep b{color:var(--ink)}
+
+  /* ---------- callouts ---------- */
+  .flag{
+    border-radius:10px;padding:18px 22px;margin:16px 0;
+    font-size:14.5px;
+  }
+  .flag h4{font-size:14px;margin-bottom:6px;letter-spacing:.01em}
+  .flag.warn{background:var(--amber-soft);border-left:4px solid var(--amber)}
+  .flag.warn h4{color:var(--amber)}
+  .flag.info{background:var(--blue-soft);border-left:4px solid var(--blue)}
+  .flag.info h4{color:var(--blue)}
+  .flag.wine{background:var(--wine-soft);border-left:4px solid var(--wine)}
+  .flag.wine h4{color:var(--wine)}
+  .flag ul{margin:8px 0 0 18px}
+  .flag li{margin-bottom:4px}
+
+  /* ---------- grid cards ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+  .card{
+    background:var(--card);border:1px solid var(--line);
+    border-radius:10px;padding:18px 20px;
+  }
+  .card h4{font-size:15px;margin-bottom:4px}
+  .card .meta{font-size:12px;color:var(--wine);font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:8px}
+  .card p{font-size:14px;color:var(--ink-soft)}
+  .card a{color:var(--wine);font-size:13px;text-decoration:none;border-bottom:1px solid rgba(123,30,58,.3)}
+  .card a:hover{border-bottom-color:var(--wine)}
+
+  /* ---------- table ---------- */
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:14.5px}
+  th{background:#f2ede5;text-align:left;padding:11px 16px;font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-soft);font-weight:700}
+  td{padding:11px 16px;border-top:1px solid var(--line)}
+  td.num{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--ink-soft)}
+  tr.total td{background:#f8f4ee;font-weight:700;color:var(--ink)}
+
+  /* ---------- checklist ---------- */
+  ol.check{list-style:none;counter-reset:c}
+  ol.check li{
+    counter-increment:c;
+    background:var(--card);border:1px solid var(--line);border-radius:10px;
+    padding:14px 18px 14px 52px;position:relative;margin-bottom:10px;font-size:14.5px;
+  }
+  ol.check li::before{
+    content:counter(c);
+    position:absolute;left:16px;top:14px;
+    width:22px;height:22px;border-radius:50%;
+    background:var(--wine);color:#fff;
+    font-size:12px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+  ol.check b{display:block;margin-bottom:2px}
+  ol.check span{color:var(--ink-soft)}
+
+  footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:#8b8378}
+
+  @media(max-width:600px){
+    .drive{margin-left:0;flex-basis:100%}
+    ul.sched li{flex-direction:column;gap:2px}
+    ul.sched .t{flex-basis:auto}
+    .stats{gap:22px}
+  }
+  @media print{
+    body{background:#fff}
+    header{background:#5c1730 !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .day{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <div class="eyebrow">Road trip · Wednesday 12 to Sunday 16 August 2026</div>
+    <h1>Moselle, Strasbourg<br>&amp; Alsace</h1>
+    <p class="sub">Den Bosch, Trier, Strasbourg, Wettolsheim and back. Four nights, three bases, and enough breathing room to actually be somewhere rather than just pass through it.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">4</div><div class="l">nights</div></div>
+      <div class="stat"><div class="n">±1,225 km</div><div class="l">total</div></div>
+      <div class="stat"><div class="n">±13 h</div><div class="l">driving</div></div>
+      <div class="stat"><div class="n">3</div><div class="l">countries</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="verdict">
+    <h2>The trip in brief</h2>
+    <p>Five days from Den Bosch through Roman Trier and Strasbourg to the Alsatian wine villages, and back. Four nights across three bases, with the longest leg along the way being three hours. The only heavy stretch is the drive home on Sunday, 5.5 hours from Colmar, so that morning starts early.</p>
+    <p>The plan deliberately puts the <b>wine tasting on Friday 14 August</b> rather than Saturday. Saturday is Assumption Day, a national holiday in France, when many wine estates and shops close. That leaves Saturday free for Colmar, Eguisheim and the Route des Vins, which stay open and lively.</p>
+    <p>It works with hotels or with a camper. The route and the timings are identical either way, only the overnight stops change. <a href="#camper" style="color:#2c5a38">The camper version is set out further down.</a></p>
+  </div>
+
+  <h2 class="sec">Day by day</h2>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="badge">Wed 12 Aug</span>
+      <h3>Den Bosch → Trier</h3>
+      <span class="drive">305 km · ±3 h 10</span>
+    </div>
+    <p class="lead">An easy transfer day. You arrive early enough to walk into town and eat properly.</p>
+    <ul class="sched">
+      <li><span class="t">14:30</span><span class="d"><strong>Leave Vughterstraat.</strong> <span>Route via Eindhoven, Aachen and Luxembourg. Fill up in Luxembourg, it saves a lot.</span></span></li>
+      <li><span class="t">16:30</span><span class="d"><strong>Coffee stop</strong> <span>somewhere near the Luxembourg border.</span></span></li>
+      <li><span class="t">18:00</span><span class="d"><strong>Arrive in Trier.</strong> <span>Check in, drop the bags.</span></span></li>
+      <li><span class="t">19:00</span><span class="d"><strong>Evening walk to the Hauptmarkt and Porta Nigra,</strong> <span>then dinner on a terrace by the square. A Moselle Riesling to go with it.</span></span></li>
+    </ul>
+    <div class="sleep"><b>Sleep:</b> in Trier itself (everything walkable, easiest for a car-free evening), or more romantically along the Moselle in Trittenheim, Piesport or Neumagen-Dhron, 25 to 35 minutes away.</div>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="badge">Thu 13 Aug</span>
+      <h3>Trier → Strasbourg</h3>
+      <span class="drive">230 km · ±2 h 20</span>
+    </div>
+    <p class="lead">Roman Trier in the morning, drive on after lunch. You are in Strasbourg well before aperitif hour.</p>
+    <ul class="sched">
+      <li><span class="t">09:30</span><span class="d"><strong>Porta Nigra</strong> <span>(worth going inside), then the Dom and the Konstantinbasilika.</span></span></li>
+      <li><span class="t">11:30</span><span class="d"><strong>Kaiserthermen or the amphitheatre,</strong> <span>depending on how much Roman you can take.</span></span></li>
+      <li><span class="t">12:30</span><span class="d"><strong>Lunch</strong> <span>in the old town.</span></span></li>
+      <li><span class="t">14:00</span><span class="d"><strong>Drive to Strasbourg</strong> <span>via Saarbrücken. Park in a garage or a P+R, not in the centre.</span></span></li>
+      <li><span class="t">16:30</span><span class="d"><strong>Check in, then out into the city.</strong> <span>Cathedral, astronomical clock, Petite France.</span></span></li>
+      <li><span class="t">19:30</span><span class="d"><strong>Dinner at a winstub</strong> <span>with a bottle of Alsatian. Book this, August evenings fill up.</span></span></li>
+    </ul>
+    <div class="sleep"><b>Sleep:</b> central Strasbourg, around the Grande Île or Petite France. Check in advance whether the hotel sorts out parking.</div>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="badge">Fri 14 Aug</span>
+      <h3>Strasbourg → Wettolsheim</h3>
+      <span class="drive">75 km · ±1 h</span>
+    </div>
+    <p class="lead">Wine day. Deliberately on Friday, because tomorrow is a public holiday and the estate is likely to be closed.</p>
+    <ul class="sched">
+      <li><span class="t">09:00</span><span class="d"><strong>Slow morning in Strasbourg.</strong> <span>Market, coffee, maybe a boat trip on the Ill.</span></span></li>
+      <li><span class="t">11:30</span><span class="d"><strong>Head south.</strong> <span>Take the A35, or if you have time, the Route des Vins past Obernai and Riquewihr.</span></span></li>
+      <li><span class="t">13:00</span><span class="d"><strong>Lunch on the way,</strong> <span>in Kaysersberg or Riquewihr for instance.</span></span></li>
+      <li><span class="t">15:00</span><span class="d"><strong>Tasting in Wettolsheim.</strong> <span>By appointment, see below.</span></span></li>
+      <li><span class="t">17:00</span><span class="d"><strong>Check in</strong> <span>in Wettolsheim, Eguisheim or Colmar.</span></span></li>
+      <li><span class="t">19:30</span><span class="d"><strong>Dinner in Colmar or Eguisheim.</strong> <span>Eguisheim is five minutes away and looks like a fairy tale after dark.</span></span></li>
+    </ul>
+    <div class="sleep"><b>Sleep:</b> two nights in the same place, which saves hauling luggage around. Wettolsheim is quiet, Eguisheim is the prettiest village, Colmar has the most going on.</div>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="badge">Sat 15 Aug</span>
+      <h3>Alsace, free day</h3>
+      <span class="drive">50 to 90 km locally</span>
+    </div>
+    <p class="lead">Public holiday in France. Shops and many estates closed, but villages, terraces and restaurants open and busy. A good day for wandering rather than planning.</p>
+    <ul class="sched">
+      <li><span class="t">09:30</span><span class="d"><strong>Colmar</strong> <span>in the morning, while it is still calm. Petite Venise and the Unterlinden.</span></span></li>
+      <li><span class="t">12:30</span><span class="d"><strong>Lunch</strong> <span>on a terrace.</span></span></li>
+      <li><span class="t">14:30</span><span class="d"><strong>Route des Vins heading north:</strong> <span>Eguisheim, Turckheim, Kaysersberg, Riquewihr.</span></span></li>
+      <li><span class="t">16:00</span><span class="d"><strong>Alternative:</strong> <span>Château du Haut-Kœnigsbourg (40 min) or a walk through the vineyards up to the Grand Cru Steingrubler, right behind Wettolsheim.</span></span></li>
+      <li><span class="t">19:30</span><span class="d"><strong>Last evening,</strong> <span>book this one too. A holiday means full restaurants.</span></span></li>
+    </ul>
+    <div class="sleep"><b>Sleep:</b> same address as last night. Pack up this evening.</div>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="badge">Sun 16 Aug</span>
+      <h3>Wettolsheim → Den Bosch</h3>
+      <span class="drive">545 km · ±5 h 30</span>
+    </div>
+    <p class="lead">The one long day. Leaving early is the difference between home at four and home at seven.</p>
+    <ul class="sched">
+      <li><span class="t">09:00</span><span class="d"><strong>Breakfast and check out.</strong></span></li>
+      <li><span class="t">09:45</span><span class="d"><strong>Depart.</strong> <span>Route via Strasbourg, Karlsruhe, Cologne. Or via Metz and Luxembourg if you want one more cheap tank.</span></span></li>
+      <li><span class="t">12:30</span><span class="d"><strong>Lunch stop,</strong> <span>roughly halfway.</span></span></li>
+      <li><span class="t">15:30</span><span class="d"><strong>Home.</strong> <span>Well before the end of the afternoon.</span></span></li>
+    </ul>
+    <div class="sleep"><b>Note:</b> mid-August is when France swaps its holidaymakers over, and the Sunday after 15 August can be busy heading north. Leave before ten.</div>
+  </div>
+
+  <h2 class="sec">What goes wrong if you do nothing</h2>
+
+  <div class="flag warn">
+    <h4>Saturday 15 August is a national holiday in France</h4>
+    <p>Assumption Day. Supermarkets, shops and a fair share of wine estates are closed, while restaurants and villages are extra busy. That is why the tasting sits on Friday and not Saturday.</p>
+  </div>
+
+  <div class="flag warn">
+    <h4>Domaine Albert Mann is out: summer closure</h4>
+    <p>Wettolsheim's best-known estate is closed from 30 July through 17 August. Exactly your week. Do not bother emailing, pick an alternative.</p>
+  </div>
+
+  <div class="flag warn">
+    <h4>Strasbourg has a low-emission zone (ZFE)</h4>
+    <p>You need a Crit'Air sticker to drive into the centre, Dutch plates included. It costs a few euros but delivery easily takes one to two weeks, so order it now rather than the week itself. Use the official French site only, plenty of resellers charge double.</p>
+  </div>
+
+  <h2 class="sec">Wine tasting in Wettolsheim</h2>
+
+  <div class="flag wine">
+    <h4>Book now, not on the day</h4>
+    <p>In August the good Alsatian estates receive almost exclusively by appointment. An email this week is enough. Mention the date, the time, how many of you there are, and that you are coming from the Netherlands.</p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="meta">First choice · Wettolsheim</div>
+      <h4>Domaine Barmès-Buecher</h4>
+      <p>Biodynamic since 1998, 18 hectares, nine grape varieties. The tasting room sits in a converted barn. By appointment only.</p>
+      <p style="margin-top:8px"><b>+33 3 89 80 62 92</b><br>info@barmes-buecher.com</p>
+      <p style="margin-top:8px"><a href="https://barmes-buecher.com/en">barmes-buecher.com</a></p>
+    </div>
+    <div class="card">
+      <div class="meta">Ruled out · Wettolsheim</div>
+      <h4>Domaine Albert Mann</h4>
+      <p>A top estate, but closed from 30 July through 17 August. Save it for next time.</p>
+      <p style="margin-top:8px">13 Rue du Château, Wettolsheim</p>
+    </div>
+    <div class="card">
+      <div class="meta">Backup · Eguisheim, 5 min</div>
+      <h4>Emile Beyer or Paul Ginglinger</h4>
+      <p>Eguisheim sits next to Wettolsheim and has caveaux that stay open without an appointment in high season. Useful as a plan B, or simply as a second tasting.</p>
+    </div>
+    <div class="card">
+      <div class="meta">Walk · Wettolsheim</div>
+      <h4>Grand Cru Steingrubler</h4>
+      <p>The vineyard path starts directly behind the village. An hour uphill, views across the Rhine plain and, on a clear day, all the way to the Black Forest.</p>
+    </div>
+  </div>
+
+  <h2 class="sec">Driving times at a glance</h2>
+
+  <table>
+    <thead>
+      <tr><th>Leg</th><th>Distance</th><th>Driving time</th><th>Day</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Den Bosch → Trier</td><td class="num">305 km</td><td class="num">3 h 10</td><td class="num">Wed 12</td></tr>
+      <tr><td>Trier → Strasbourg</td><td class="num">230 km</td><td class="num">2 h 20</td><td class="num">Thu 13</td></tr>
+      <tr><td>Strasbourg → Wettolsheim</td><td class="num">75 km</td><td class="num">1 h 00</td><td class="num">Fri 14</td></tr>
+      <tr><td>Local driving in Alsace</td><td class="num">±70 km</td><td class="num">1 h 30</td><td class="num">Sat 15</td></tr>
+      <tr><td>Wettolsheim → Den Bosch</td><td class="num">545 km</td><td class="num">5 h 30</td><td class="num">Sun 16</td></tr>
+      <tr class="total"><td>Total</td><td class="num">±1,225 km</td><td class="num">±13 h 30</td><td class="num"></td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec" id="camper">If you take the camper instead</h2>
+
+  <div class="flag info">
+    <h4>Same route, easier logistics</h4>
+    <p>Nothing about the day-by-day plan changes. You drop three hotel bookings and pick up three overnight spots, all of which sit within walking or tram distance of what you came to see. Add roughly ten to fifteen percent to the driving times, and keep in mind that the Route des Vins villages have narrow streets, so park outside and walk in.</p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="meta">Wed 12 Aug · Trier</div>
+      <h4>Reisemobilpark Treviris</h4>
+      <p>Right on the Moselle, about fifteen minutes on foot across the bridge into the old town. Full services, open year round, no reservation needed. The obvious choice for a car-free evening.</p>
+    </div>
+    <div class="card">
+      <div class="meta">Thu 13 Aug · Strasbourg</div>
+      <h4>Camping de Strasbourg, Montagne Verte</h4>
+      <p>Four-star site west of the centre with a bus and tram connection straight into town, so you can have that bottle of Alsatian without thinking about it. Book this one, August fills up.</p>
+      <p style="margin-top:8px">Alternative: the aire at the Deux Rives youth hostel, closer in but plainer.</p>
+    </div>
+    <div class="card">
+      <div class="meta">Fri 14 &amp; Sat 15 Aug · Alsace</div>
+      <h4>Aire d'Eguisheim, Grand Rue</h4>
+      <p>Behind the town hall, on the edge of arguably the prettiest village in Alsace, five minutes from Wettolsheim. Walk into the village for dinner. Popular in August, so arrive in the early afternoon.</p>
+      <p style="margin-top:8px">Alternative: Camping de l'Ill in Colmar, with a bus into the centre.</p>
+    </div>
+    <div class="card">
+      <div class="meta">Worth setting up · All of France</div>
+      <h4>France Passion</h4>
+      <p>A membership scheme that lets you park overnight for free at participating farms and wine estates, and Alsace is well covered. No facilities, one night, no obligation to buy (though obviously you will). Order the guide well before you leave, it arrives by post.</p>
+    </div>
+  </div>
+
+  <div class="flag wine">
+    <h4>The real camper advantage</h4>
+    <p>A tasting where you have to drive afterwards is a tasting where someone spits. If you can park for the night at or near the estate, Friday afternoon becomes a genuinely different afternoon. Mention it when you email Barmès-Buecher, or line up a France Passion address nearby as the backup.</p>
+  </div>
+
+  <div class="flag warn">
+    <h4>The Crit'Air sticker still applies</h4>
+    <p>Campers are not exempt from Strasbourg's low-emission zone. And check your vehicle's Crit'Air class before you order: older diesel campers can fall into a category that is restricted rather than merely stickered. Worth five minutes now instead of a conversation at a checkpoint later.</p>
+  </div>
+
+  <h2 class="sec">Alternatives if you want less driving</h2>
+
+  <div class="flag info">
+    <h4>Skip or shorten Strasbourg</h4>
+    <p>If you would rather stay put longer, cut Strasbourg down to a long afternoon and evening and skip the overnight there. That gives you: Wednesday and Thursday on the Moselle, Friday afternoon in Strasbourg as a stop along the way, and three nights in Alsace. Same amount of driving, but you unpack twice instead of three times.</p>
+  </div>
+
+  <div class="flag info">
+    <h4>Or more: add the Vosges</h4>
+    <p>On Saturday, the Route des Crêtes starting from Munster (20 minutes from Wettolsheim) is a beautiful mountain drive with views over the whole of Alsace. Allow half a day and a fair number of hairpins.</p>
+  </div>
+
+  <h2 class="sec">To arrange, in order</h2>
+
+  <ol class="check">
+    <li><b>Order the Crit'Air sticker</b><span>Official French site, delivery takes one to two weeks. Do this first.</span></li>
+    <li><b>Email Barmès-Buecher for Friday 14 August, around 15:00</b><span>info@barmes-buecher.com. Mention the number of people and whether you also want to buy.</span></li>
+    <li><b>Decide: hotels or camper</b><span>Everything below depends on this one call. Camper means less booking but more arriving early.</span></li>
+    <li><b>Hotels · book Trier or Moselle (1 night, Wed 12)</b><span>Central Trier for convenience, a Moselle village for the view.</span></li>
+    <li><b>Hotels · book Strasbourg (1 night, Thu 13)</b><span>Grande Île or Petite France. Ask about parking.</span></li>
+    <li><b>Hotels · book Alsace (2 nights, Fri 14 and Sat 15)</b><span>Wettolsheim, Eguisheim or Colmar. Mid-August is peak season, these sell out.</span></li>
+    <li><b>Camper · book Camping de Strasbourg, order France Passion</b><span>Trier and Eguisheim take you as you come. Strasbourg is the one to reserve, and the France Passion guide needs to arrive by post before you leave.</span></li>
+    <li><b>Reserve a restaurant in Strasbourg (Thu evening)</b><span>A winstub in or around Petite France.</span></li>
+    <li><b>Reserve a restaurant for Saturday evening</b><span>Public holiday, so without a booking you are standing outside.</span></li>
+    <li><b>Green card, breakdown cover and warning triangle</b><span>Standard, but worth a quick check.</span></li>
+  </ol>
+
+  <footer>
+    Drawn up on 4 August 2026. Driving times are estimates without traffic. Opening hours and public holidays: check again shortly before you leave, especially those of the wine estates.
+  </footer>
+
+</div>
+</body>
+</html>
