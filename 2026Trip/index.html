@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alsace &amp; Moselle · 12 to 16 August 2026</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 <style>
   :root{
     --ink:#1c1a17;
@@ -192,6 +193,39 @@
   ol.check b{display:block;margin-bottom:2px}
   ol.check span{color:var(--ink-soft)}
 
+  /* ---------- map ---------- */
+  #map{height:460px;width:100%;border-radius:12px;border:1px solid var(--line);z-index:0;background:#eee}
+  #map-alsace{height:340px;width:100%;border-radius:12px;border:1px solid var(--line);z-index:0;background:#eee}
+  .leaflet-popup-content{font-size:13.5px;line-height:1.45}
+  .leaflet-popup-content b{color:var(--wine)}
+  .map-note{font-size:12.5px;color:var(--ink-soft);margin-top:10px}
+  .route-btn{
+    display:inline-block;margin-top:14px;
+    background:var(--wine);color:#fff;text-decoration:none;
+    font-size:14px;font-weight:600;
+    padding:11px 20px;border-radius:8px;
+  }
+  .route-btn:hover{background:#63182f}
+
+  .addr{margin-top:22px;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .addr-row{display:flex;align-items:center;gap:14px;padding:12px 18px;border-top:1px solid var(--line)}
+  .addr-row:first-child{border-top:none}
+  .addr-num{
+    flex:0 0 26px;height:26px;border-radius:50%;
+    background:var(--wine);color:#fff;
+    font-size:12px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .addr-num.alt{background:var(--green)}
+  .addr-txt{flex:1;min-width:0}
+  .addr-txt .n{font-size:14.5px;font-weight:600}
+  .addr-txt .a{font-size:12.5px;color:var(--ink-soft)}
+  .addr-nav{
+    font-size:13px;color:var(--wine);text-decoration:none;white-space:nowrap;
+    border:1px solid var(--line);border-radius:6px;padding:5px 11px;
+  }
+  .addr-nav:hover{border-color:var(--wine)}
+
   footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:#8b8378}
 
   @media(max-width:600px){
@@ -232,6 +266,18 @@
     <p>It works with hotels or with a camper. The route and the timings are identical either way, only the overnight stops change. <a href="#camper" style="color:#2c5a38">The camper version is set out further down.</a></p>
   </div>
 
+  <h2 class="sec">The route</h2>
+
+  <div id="map"></div>
+  <a class="route-btn" id="fullroute" href="#" target="_blank" rel="noopener">&#128506;&#65039; Open the whole route in Google Maps</a>
+  <div class="map-note">Den Bosch, Trier, Strasbourg, Wettolsheim, and back the same way. Map not loading? Use the button above or the navigation links below.</div>
+
+  <h3 style="font-size:15px;margin:34px 0 12px">Alsace in detail</h3>
+  <div id="map-alsace"></div>
+  <div class="map-note">Everything within twenty minutes of the Friday and Saturday base. Green pins are the detours.</div>
+
+  <div class="addr" id="addrlist"></div>
+
   <h2 class="sec">Day by day</h2>
 
   <div class="day">
@@ -263,7 +309,7 @@
       <li><span class="t">12:30</span><span class="d"><strong>Lunch</strong> <span>in the old town.</span></span></li>
       <li><span class="t">14:00</span><span class="d"><strong>Drive to Strasbourg</strong> <span>via Saarbrücken. Park in a garage or a P+R, not in the centre.</span></span></li>
       <li><span class="t">16:30</span><span class="d"><strong>Check in, then out into the city.</strong> <span>Cathedral, astronomical clock, Petite France.</span></span></li>
-      <li><span class="t">19:30</span><span class="d"><strong>Dinner at a winstub</strong> <span>with a bottle of Alsatian. Book this, August evenings fill up.</span></span></li>
+      <li><span class="t">19:30</span><span class="d"><strong>Dinner at a winstub</strong> <span>with a bottle of Alsatian. Plenty of them in and around Petite France.</span></span></li>
     </ul>
     <div class="sleep"><b>Sleep:</b> central Strasbourg, around the Grande Île or Petite France. Check in advance whether the hotel sorts out parking.</div>
   </div>
@@ -298,7 +344,7 @@
       <li><span class="t">12:30</span><span class="d"><strong>Lunch</strong> <span>on a terrace.</span></span></li>
       <li><span class="t">14:30</span><span class="d"><strong>Route des Vins heading north:</strong> <span>Eguisheim, Turckheim, Kaysersberg, Riquewihr.</span></span></li>
       <li><span class="t">16:00</span><span class="d"><strong>Alternative:</strong> <span>Château du Haut-Kœnigsbourg (40 min) or a walk through the vineyards up to the Grand Cru Steingrubler, right behind Wettolsheim.</span></span></li>
-      <li><span class="t">19:30</span><span class="d"><strong>Last evening,</strong> <span>book this one too. A holiday means full restaurants.</span></span></li>
+      <li><span class="t">19:30</span><span class="d"><strong>Last evening</strong> <span>in Colmar or Eguisheim. Busy, it being a holiday, so eat a little earlier or a little later.</span></span></li>
     </ul>
     <div class="sleep"><b>Sleep:</b> same address as last night. Pack up this evening.</div>
   </div>
@@ -449,8 +495,6 @@
     <li><b>Hotels · book Strasbourg (1 night, Thu 13)</b><span>Grande Île or Petite France. Ask about parking.</span></li>
     <li><b>Hotels · book Alsace (2 nights, Fri 14 and Sat 15)</b><span>Wettolsheim, Eguisheim or Colmar. Mid-August is peak season, these sell out.</span></li>
     <li><b>Camper · book Camping de Strasbourg, order France Passion</b><span>Trier and Eguisheim take you as you come. Strasbourg is the one to reserve, and the France Passion guide needs to arrive by post before you leave.</span></li>
-    <li><b>Reserve a restaurant in Strasbourg (Thu evening)</b><span>A winstub in or around Petite France.</span></li>
-    <li><b>Reserve a restaurant for Saturday evening</b><span>Public holiday, so without a booking you are standing outside.</span></li>
     <li><b>Green card, breakdown cover and warning triangle</b><span>Standard, but worth a quick check.</span></li>
   </ol>
 
@@ -459,5 +503,93 @@
   </footer>
 
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+  var stops = [
+    {n:"S", label:"Start and finish &middot; Wed 12 and Sun 16 Aug", name:"Home, Den Bosch", addr:"Vughterstraat 130, 5211 GJ 's-Hertogenbosch", lat:51.6850, lng:5.2970, alt:false},
+    {n:"1", label:"Night 1 &middot; Wed 12 Aug", name:"Trier (Porta Nigra)", addr:"Porta Nigra, Simeonstrasse 60, 54290 Trier", lat:49.7596, lng:6.6440, alt:false},
+    {n:"2", label:"Night 2 &middot; Thu 13 Aug", name:"Strasbourg (cathedral)", addr:"Place de la Cathedrale, 67000 Strasbourg", lat:48.5819, lng:7.7509, alt:false},
+    {n:"3", label:"Nights 3 and 4 &middot; Fri 14 and Sat 15 Aug", name:"Wettolsheim (wine tasting)", addr:"Domaine Barmes-Buecher, 30 Rue Sainte-Gertrude, 68920 Wettolsheim", lat:48.0561, lng:7.2936, alt:false},
+    {n:"F", label:"Finish &middot; Sun 16 Aug", name:"Home, Den Bosch", addr:"Vughterstraat 130, 5211 GJ 's-Hertogenbosch", lat:51.6850, lng:5.2970, alt:false, noMarker:true},
+    {n:"a", label:"Detour &middot; prettiest village, 5 min away", name:"Eguisheim", addr:"Grand Rue, 68420 Eguisheim", lat:48.0433, lng:7.3067, alt:true},
+    {n:"b", label:"Detour &middot; Sat morning", name:"Colmar (Petite Venise)", addr:"Petite Venise, 68000 Colmar", lat:48.0740, lng:7.3585, alt:true},
+    {n:"c", label:"Detour &middot; Route des Vins", name:"Kaysersberg", addr:"68240 Kaysersberg", lat:48.1383, lng:7.2647, alt:true},
+    {n:"d", label:"Detour &middot; 40 min from Colmar", name:"Chateau du Haut-Koenigsbourg", addr:"Chateau du Haut-Koenigsbourg, 67600 Orschwiller", lat:48.2494, lng:7.3444, alt:true}
+  ];
+
+  function navUrl(addr){
+    return "https://www.google.com/maps/dir/?api=1&travelmode=driving&destination=" + encodeURIComponent(addr);
+  }
+
+  (function(){
+    var main = stops.filter(function(s){return !s.alt;});
+    var mids = main.slice(1, main.length-1).map(function(s){return s.addr;});
+    document.getElementById("fullroute").href =
+      "https://www.google.com/maps/dir/?api=1&travelmode=driving"
+      + "&origin=" + encodeURIComponent(main[0].addr)
+      + "&destination=" + encodeURIComponent(main[main.length-1].addr)
+      + "&waypoints=" + mids.map(encodeURIComponent).join("%7C");
+  })();
+
+  (function(){
+    var html = "";
+    stops.forEach(function(s){
+      html += '<div class="addr-row">'
+        + '<div class="addr-num' + (s.alt ? ' alt' : '') + '">' + s.n + '</div>'
+        + '<div class="addr-txt"><div class="n">' + s.name + '</div><div class="a">' + s.addr + '</div></div>'
+        + '<a class="addr-nav" target="_blank" rel="noopener" href="' + navUrl(s.addr) + '">Navigate &rsaquo;</a>'
+        + '</div>';
+    });
+    document.getElementById("addrlist").innerHTML = html;
+  })();
+
+  function pin(s){
+    var color = s.alt ? "#3f6b4a" : "#7b1e3a";
+    return L.divIcon({
+      className:'',
+      html:'<div style="background:'+color+';color:#fff;width:26px;height:26px;border-radius:50% 50% 50% 0;'
+         + 'transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;'
+         + 'box-shadow:0 1px 4px rgba(0,0,0,.4);border:2px solid #fff;">'
+         + '<span style="transform:rotate(45deg);font-size:12px;font-weight:700;">'+s.n+'</span></div>',
+      iconSize:[26,26], iconAnchor:[13,26], popupAnchor:[0,-24]
+    });
+  }
+
+  function draw(elId, list, withLine){
+    var map = L.map(elId, {scrollWheelZoom:false});
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18, attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
+
+    var bounds = [], line = [];
+    list.forEach(function(s){
+      bounds.push([s.lat, s.lng]);
+      if(!s.alt) line.push([s.lat, s.lng]);
+      if(s.noMarker) return;
+      L.marker([s.lat, s.lng], {icon:pin(s)}).addTo(map)
+        .bindPopup('<b>'+s.label+'</b><br>'+s.name+'<br>'+s.addr);
+    });
+
+    if(withLine && line.length > 1){
+      L.polyline(line, {color:'#7b1e3a', weight:3, opacity:.6, dashArray:'6,8'}).addTo(map);
+    }
+    map.fitBounds(bounds, {padding:[40,40]});
+  }
+
+  (function(){
+    try {
+      draw('map', stops.filter(function(s){return !s.alt;}), true);
+      draw('map-alsace', stops.filter(function(s){return s.alt || s.n === "3";}), false);
+    } catch(e){
+      ['map','map-alsace'].forEach(function(id){
+        var el = document.getElementById(id);
+        if(el) el.innerHTML =
+          '<div style="padding:40px;text-align:center;color:#5b544c;font-size:14px;">'
+          + 'The map could not load. Use the button or the navigation links below.</div>';
+      });
+    }
+  })();
+</script>
 </body>
 </html>
