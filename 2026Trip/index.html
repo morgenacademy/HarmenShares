@@ -226,6 +226,22 @@
   }
   .addr-nav:hover{border-color:var(--wine)}
 
+  /* ---------- tabs ---------- */
+  .tabs{display:flex;gap:6px;margin-bottom:-1px;flex-wrap:wrap}
+  .tab{
+    padding:11px 20px;border:1px solid var(--line);border-bottom:none;
+    border-radius:9px 9px 0 0;background:#f2ede5;cursor:pointer;
+    font-family:inherit;font-size:14px;font-weight:600;color:var(--ink-soft);
+    line-height:1.3;
+  }
+  .tab small{display:block;font-weight:400;font-size:11.5px;opacity:.8}
+  .tab.active{background:var(--card);color:var(--accent);border-bottom:1px solid var(--card);position:relative;z-index:1}
+  .tab:hover:not(.active){color:var(--ink)}
+  .tabwrap{border-top:1px solid var(--line);padding-top:26px}
+  .panel[hidden]{display:none}
+  .variant-note{font-size:14px;color:var(--ink-soft);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:20px}
+  .variant-note b{color:var(--ink)}
+
   footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-size:12.5px;color:#8b8378}
 
   @media(max-width:600px){
@@ -249,7 +265,7 @@
     <h1>Moselle, Strasbourg<br>&amp; Alsace</h1>
     <p class="sub">Den Bosch, Trier, Strasbourg, Wettolsheim and back. Four nights, three bases, and enough breathing room to actually be somewhere rather than just pass through it.</p>
     <div class="stats">
-      <div class="stat"><div class="n">4</div><div class="l">nights</div></div>
+      <div class="stat"><div class="n">5 or 4</div><div class="l">days</div></div>
       <div class="stat"><div class="n">±1,225 km</div><div class="l">total</div></div>
       <div class="stat"><div class="n">±13 h</div><div class="l">driving</div></div>
       <div class="stat"><div class="n">3</div><div class="l">countries</div></div>
@@ -263,6 +279,7 @@
     <h2>The trip in brief</h2>
     <p>Five days from Den Bosch through Roman Trier and Strasbourg to the Alsatian wine villages, and back. Four nights across three bases, with the longest leg along the way being three hours. The only heavy stretch is the drive home on Sunday, 5.5 hours from Colmar, so that morning starts early.</p>
     <p>The plan deliberately puts the <b>wine tasting on Friday 14 August</b> rather than Saturday. Saturday is Assumption Day, a national holiday in France, when many wine estates and shops close. That leaves Saturday free for Colmar, Eguisheim and the Route des Vins, which stay open and lively.</p>
+    <p>There are two versions of the schedule, switchable below: five days with a night in Trier, or four days with Trier as a lunch stop on the way south. The route, the mileage and the total driving time are identical. What the shorter version costs is an evening and a morning in Trier, and it turns day one into a five-and-a-half-hour drive.</p>
     <p>It works with hotels or with a camper. The route and the timings are identical either way, only the overnight stops change. <a href="#camper" style="color:#2c5a38">The camper version is set out further down.</a></p>
   </div>
 
@@ -279,6 +296,20 @@
   <div class="addr" id="addrlist"></div>
 
   <h2 class="sec">Day by day</h2>
+
+  <div class="tabs" role="tablist">
+    <button class="tab active" role="tab" aria-selected="true" aria-controls="p5" id="t5">Five days<small>Wed 12 to Sun 16, night in Trier</small></button>
+    <button class="tab" role="tab" aria-selected="false" aria-controls="p4" id="t4">Four days<small>Thu 13 to Sun 16, Trier as a stop</small></button>
+  </div>
+
+  <div class="tabwrap">
+
+  <!-- ============ FIVE DAYS ============ -->
+  <div class="panel" id="p5" role="tabpanel" aria-labelledby="t5">
+
+  <div class="variant-note">
+    <b>Four nights, three bases.</b> The gentlest version. Trier gets a proper evening and an unhurried morning, and no single day is heavy except the drive home.
+  </div>
 
   <div class="day">
     <div class="day-head">
@@ -365,6 +396,113 @@
     <div class="sleep"><b>Note:</b> mid-August is when France swaps its holidaymakers over, and the Sunday after 15 August can be busy heading north. Leave before ten.</div>
   </div>
 
+  <h3 style="font-size:15px;margin:34px 0 12px">Driving times, five-day version</h3>
+  <table>
+    <thead><tr><th>Leg</th><th>Distance</th><th>Driving time</th><th>Day</th></tr></thead>
+    <tbody>
+      <tr><td>Den Bosch → Trier</td><td class="num">305 km</td><td class="num">3 h 10</td><td class="num">Wed 12</td></tr>
+      <tr><td>Trier → Strasbourg</td><td class="num">230 km</td><td class="num">2 h 20</td><td class="num">Thu 13</td></tr>
+      <tr><td>Strasbourg → Wettolsheim</td><td class="num">75 km</td><td class="num">1 h 00</td><td class="num">Fri 14</td></tr>
+      <tr><td>Local driving in Alsace</td><td class="num">±70 km</td><td class="num">1 h 30</td><td class="num">Sat 15</td></tr>
+      <tr><td>Wettolsheim → Den Bosch</td><td class="num">545 km</td><td class="num">5 h 30</td><td class="num">Sun 16</td></tr>
+      <tr class="total"><td>Total</td><td class="num">±1,225 km</td><td class="num">±13 h 30</td><td class="num">4 nights</td></tr>
+    </tbody>
+  </table>
+
+  </div><!-- /five days -->
+
+  <!-- ============ FOUR DAYS ============ -->
+  <div class="panel" id="p4" role="tabpanel" aria-labelledby="t4" hidden>
+
+  <div class="variant-note">
+    <b>Three nights, two bases.</b> Same route, same kilometres, one night fewer. Trier becomes a two-hour stop rather than a stay, which buys you a whole day back at the cost of a long first day behind the wheel. The Alsace part is untouched, so the wine days survive intact.
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="badge">Thu 13 Aug</span>
+      <h3>Den Bosch → Trier → Strasbourg</h3>
+      <span class="drive">535 km · ±5 h 30</span>
+    </div>
+    <p class="lead">The long day, and the price of the shorter trip. Leave early and Trier is still a proper stop rather than a service station with Roman ruins.</p>
+    <ul class="sched">
+      <li><span class="t">08:00</span><span class="d"><strong>Leave Vughterstraat.</strong> <span>Route via Eindhoven, Aachen and Luxembourg. Fill up in Luxembourg, it saves a lot.</span></span></li>
+      <li><span class="t">11:15</span><span class="d"><strong>Arrive in Trier.</strong> <span>Park at the Porta Nigra, everything worth seeing is within ten minutes on foot.</span></span></li>
+      <li><span class="t">11:30</span><span class="d"><strong>Porta Nigra and the Hauptmarkt.</strong> <span>Go inside the gate, it takes twenty minutes and it is the reason to stop here at all.</span></span></li>
+      <li><span class="t">12:45</span><span class="d"><strong>Lunch</strong> <span>on the Hauptmarkt.</span></span></li>
+      <li><span class="t">14:00</span><span class="d"><strong>On to Strasbourg</strong> <span>via Saarbrücken. Park in a garage or a P+R, not in the centre.</span></span></li>
+      <li><span class="t">16:30</span><span class="d"><strong>Check in, then out into the city.</strong> <span>Cathedral, astronomical clock, Petite France.</span></span></li>
+      <li><span class="t">19:30</span><span class="d"><strong>Dinner at a winstub</strong> <span>with a bottle of Alsatian. Plenty of them in and around Petite France.</span></span></li>
+    </ul>
+    <div class="sleep"><b>Sleep:</b> central Strasbourg, around the Grande Île or Petite France. Check in advance whether the hotel sorts out parking.</div>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="badge">Fri 14 Aug</span>
+      <h3>Strasbourg → Wettolsheim</h3>
+      <span class="drive">75 km · ±1 h</span>
+    </div>
+    <p class="lead">Wine day, unchanged from the longer version. Deliberately on Friday, because tomorrow is a public holiday and the estate is likely to be closed.</p>
+    <ul class="sched">
+      <li><span class="t">09:00</span><span class="d"><strong>Slow morning in Strasbourg.</strong> <span>Market, coffee, maybe a boat trip on the Ill.</span></span></li>
+      <li><span class="t">11:30</span><span class="d"><strong>Head south.</strong> <span>Take the A35, or if you have time, the Route des Vins past Obernai and Riquewihr.</span></span></li>
+      <li><span class="t">13:00</span><span class="d"><strong>Lunch on the way,</strong> <span>in Kaysersberg or Riquewihr for instance.</span></span></li>
+      <li><span class="t">15:00</span><span class="d"><strong>Tasting in Wettolsheim.</strong> <span>By appointment, see below.</span></span></li>
+      <li><span class="t">17:00</span><span class="d"><strong>Check in</strong> <span>in Wettolsheim, Eguisheim or Colmar.</span></span></li>
+      <li><span class="t">19:30</span><span class="d"><strong>Dinner in Colmar or Eguisheim.</strong> <span>Eguisheim is five minutes away and looks like a fairy tale after dark.</span></span></li>
+    </ul>
+    <div class="sleep"><b>Sleep:</b> two nights in the same place. Wettolsheim is quiet, Eguisheim is the prettiest village, Colmar has the most going on.</div>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="badge">Sat 15 Aug</span>
+      <h3>Alsace, free day</h3>
+      <span class="drive">50 to 90 km locally</span>
+    </div>
+    <p class="lead">Public holiday in France. Shops and many estates closed, but villages, terraces and restaurants open and busy. A good day for wandering rather than planning.</p>
+    <ul class="sched">
+      <li><span class="t">09:30</span><span class="d"><strong>Colmar</strong> <span>in the morning, while it is still calm. Petite Venise and the Unterlinden.</span></span></li>
+      <li><span class="t">12:30</span><span class="d"><strong>Lunch</strong> <span>on a terrace.</span></span></li>
+      <li><span class="t">14:30</span><span class="d"><strong>Route des Vins heading north:</strong> <span>Eguisheim, Turckheim, Kaysersberg, Riquewihr.</span></span></li>
+      <li><span class="t">16:00</span><span class="d"><strong>Alternative:</strong> <span>Château du Haut-Kœnigsbourg (40 min) or a walk through the vineyards up to the Grand Cru Steingrubler.</span></span></li>
+      <li><span class="t">19:30</span><span class="d"><strong>Last evening</strong> <span>in Colmar or Eguisheim. Busy, it being a holiday, so eat a little earlier or a little later.</span></span></li>
+    </ul>
+    <div class="sleep"><b>Sleep:</b> same address as last night. Pack up this evening.</div>
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="badge">Sun 16 Aug</span>
+      <h3>Wettolsheim → Den Bosch</h3>
+      <span class="drive">545 km · ±5 h 30</span>
+    </div>
+    <p class="lead">Identical to the longer version. Leaving early is the difference between home at four and home at seven.</p>
+    <ul class="sched">
+      <li><span class="t">09:00</span><span class="d"><strong>Breakfast and check out.</strong></span></li>
+      <li><span class="t">09:45</span><span class="d"><strong>Depart.</strong> <span>Route via Strasbourg, Karlsruhe, Cologne. Or via Metz and Luxembourg if you want one more cheap tank.</span></span></li>
+      <li><span class="t">12:30</span><span class="d"><strong>Lunch stop,</strong> <span>roughly halfway.</span></span></li>
+      <li><span class="t">15:30</span><span class="d"><strong>Home.</strong> <span>Well before the end of the afternoon.</span></span></li>
+    </ul>
+    <div class="sleep"><b>Note:</b> mid-August is when France swaps its holidaymakers over, and the Sunday after 15 August can be busy heading north. Leave before ten.</div>
+  </div>
+
+  <h3 style="font-size:15px;margin:34px 0 12px">Driving times, four-day version</h3>
+  <table>
+    <thead><tr><th>Leg</th><th>Distance</th><th>Driving time</th><th>Day</th></tr></thead>
+    <tbody>
+      <tr><td>Den Bosch → Trier → Strasbourg</td><td class="num">535 km</td><td class="num">5 h 30</td><td class="num">Thu 13</td></tr>
+      <tr><td>Strasbourg → Wettolsheim</td><td class="num">75 km</td><td class="num">1 h 00</td><td class="num">Fri 14</td></tr>
+      <tr><td>Local driving in Alsace</td><td class="num">±70 km</td><td class="num">1 h 30</td><td class="num">Sat 15</td></tr>
+      <tr><td>Wettolsheim → Den Bosch</td><td class="num">545 km</td><td class="num">5 h 30</td><td class="num">Sun 16</td></tr>
+      <tr class="total"><td>Total</td><td class="num">±1,225 km</td><td class="num">±13 h 30</td><td class="num">3 nights</td></tr>
+    </tbody>
+  </table>
+
+  </div><!-- /four days -->
+  </div><!-- /tabwrap -->
+
   <h2 class="sec">What goes wrong if you do nothing</h2>
 
   <div class="flag warn">
@@ -414,22 +552,6 @@
       <p>The vineyard path starts directly behind the village. An hour uphill, views across the Rhine plain and, on a clear day, all the way to the Black Forest.</p>
     </div>
   </div>
-
-  <h2 class="sec">Driving times at a glance</h2>
-
-  <table>
-    <thead>
-      <tr><th>Leg</th><th>Distance</th><th>Driving time</th><th>Day</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Den Bosch → Trier</td><td class="num">305 km</td><td class="num">3 h 10</td><td class="num">Wed 12</td></tr>
-      <tr><td>Trier → Strasbourg</td><td class="num">230 km</td><td class="num">2 h 20</td><td class="num">Thu 13</td></tr>
-      <tr><td>Strasbourg → Wettolsheim</td><td class="num">75 km</td><td class="num">1 h 00</td><td class="num">Fri 14</td></tr>
-      <tr><td>Local driving in Alsace</td><td class="num">±70 km</td><td class="num">1 h 30</td><td class="num">Sat 15</td></tr>
-      <tr><td>Wettolsheim → Den Bosch</td><td class="num">545 km</td><td class="num">5 h 30</td><td class="num">Sun 16</td></tr>
-      <tr class="total"><td>Total</td><td class="num">±1,225 km</td><td class="num">±13 h 30</td><td class="num"></td></tr>
-    </tbody>
-  </table>
 
   <h2 class="sec" id="camper">If you take the camper instead</h2>
 
@@ -517,6 +639,24 @@
     {n:"c", label:"Detour &middot; Route des Vins", name:"Kaysersberg", addr:"68240 Kaysersberg", lat:48.1383, lng:7.2647, alt:true},
     {n:"d", label:"Detour &middot; 40 min from Colmar", name:"Chateau du Haut-Koenigsbourg", addr:"Chateau du Haut-Koenigsbourg, 67600 Orschwiller", lat:48.2494, lng:7.3444, alt:true}
   ];
+
+  /* Tabs. De kaarten staan bewust bóven de tabs, want een Leaflet-kaart die in
+     een verborgen div initialiseert krijgt hoogte 0 en blijft grijs. Zo hoeft
+     er geen invalidateSize() aan te pas te komen. */
+  (function(){
+    var tabs = [].slice.call(document.querySelectorAll('.tab'));
+    tabs.forEach(function(tab){
+      tab.addEventListener('click', function(){
+        tabs.forEach(function(t){
+          var panel = document.getElementById(t.getAttribute('aria-controls'));
+          var on = (t === tab);
+          t.classList.toggle('active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+          if(panel) panel.hidden = !on;
+        });
+      });
+    });
+  })();
 
   function navUrl(addr){
     return "https://www.google.com/maps/dir/?api=1&travelmode=driving&destination=" + encodeURIComponent(addr);
