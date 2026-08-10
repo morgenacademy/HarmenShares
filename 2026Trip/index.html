@@ -195,7 +195,7 @@
 
   /* ---------- map ---------- */
   #map{height:460px;width:100%;border-radius:12px;border:1px solid var(--line);z-index:0;background:#eee}
-  #map-alsace{height:340px;width:100%;border-radius:12px;border:1px solid var(--line);z-index:0;background:#eee}
+  #map-alsace,#map-mosel{height:340px;width:100%;border-radius:12px;border:1px solid var(--line);z-index:0;background:#eee}
   .leaflet-popup-content{font-size:13.5px;line-height:1.45}
   .leaflet-popup-content b{color:var(--wine)}
   .map-note{font-size:12.5px;color:var(--ink-soft);margin-top:10px}
@@ -263,12 +263,12 @@
   <div class="inner">
     <div class="eyebrow">Road trip · Wednesday 12 to Sunday 16 August 2026</div>
     <h1>Moselle, Strasbourg<br>&amp; Alsace</h1>
-    <p class="sub">Den Bosch, Trier, Strasbourg, Wettolsheim and back. Four nights, three bases, and enough breathing room to actually be somewhere rather than just pass through it.</p>
+    <p class="sub">Den Bosch to the Moselle, then over to Alsace and back. Two bases, four nights, two wine regions, and enough breathing room to actually be somewhere rather than just pass through it.</p>
     <div class="stats">
-      <div class="stat"><div class="n">5 or 4</div><div class="l">days</div></div>
-      <div class="stat"><div class="n">±1,225 km</div><div class="l">total</div></div>
-      <div class="stat"><div class="n">±13 h</div><div class="l">driving</div></div>
-      <div class="stat"><div class="n">3</div><div class="l">countries</div></div>
+      <div class="stat"><div class="n">5</div><div class="l">days</div></div>
+      <div class="stat"><div class="n">±1,270 km</div><div class="l">total</div></div>
+      <div class="stat"><div class="n">±13.5 h</div><div class="l">driving</div></div>
+      <div class="stat"><div class="n">2</div><div class="l">wine regions</div></div>
     </div>
   </div>
 </header>
@@ -277,9 +277,9 @@
 
   <div class="verdict">
     <h2>The trip in brief</h2>
-    <p>Five days from Den Bosch through Roman Trier and Strasbourg to the Alsatian wine villages, and back. Four nights across three bases, with the longest leg along the way being three hours. The only heavy stretch is the drive home on Sunday, 5.5 hours from Colmar, so that morning starts early.</p>
-    <p>The plan deliberately puts the <b>wine tasting on Friday 14 August</b> rather than Saturday. Saturday is Assumption Day, a national holiday in France, when many wine estates and shops close. That leaves Saturday free for Colmar, Eguisheim and the Route des Vins, which stay open and lively.</p>
-    <p>There are two versions of the schedule, switchable below: five days with a night in Trier, or four days with Trier as a lunch stop on the way south. The route, the mileage and the total driving time are identical. What the shorter version costs is an evening and a morning in Trier, and it turns day one into a five-and-a-half-hour drive.</p>
+    <p>Five days from Den Bosch to the Moselle, then south to the Alsatian wine villages, and home. Two bases and four nights: the campsite at Schweich, fifteen minutes from Roman Trier, and then Wettolsheim next to Colmar. The only heavy stretch is the drive home on Sunday, 5.5 hours, so that morning starts early.</p>
+    <p>Two nights on the Moselle turns Thursday into a proper wine day rather than a transfer day, and it hands the trip a second wine region for free. Riesling on the Moselle on Thursday, Alsace on Friday. Strasbourg becomes a three-hour stop on the way south instead of an overnight, which is the trade.</p>
+    <p>The <b>Alsace tasting sits on Friday 14 August</b> and not Saturday. Saturday is Assumption Day, a national holiday in France, when many wine estates and shops close. That leaves Saturday free for Colmar, Eguisheim and the Route des Vins, which stay open and lively.</p>
     <p>It works with hotels or with a camper. The route and the timings are identical either way, only the overnight stops change. <a href="#camper" style="color:#2c5a38">The camper version is set out further down.</a></p>
   </div>
 
@@ -287,80 +287,83 @@
 
   <div id="map"></div>
   <a class="route-btn" id="fullroute" href="#" target="_blank" rel="noopener">&#128506;&#65039; Open the whole route in Google Maps</a>
-  <div class="map-note">Den Bosch, Trier, Strasbourg, Wettolsheim, and back the same way. Map not loading? Use the button above or the navigation links below.</div>
+  <div class="map-note">Den Bosch, Schweich on the Moselle, Strasbourg, Wettolsheim, and back the same way. Map not loading? Use the button above or the navigation links below.</div>
+
+  <h3 style="font-size:15px;margin:34px 0 12px">The Moselle in detail</h3>
+  <div id="map-mosel"></div>
+  <div class="map-note">Everything within 45 minutes of the campsite: Trier, the Thursday walk, and the wine villages.</div>
 
   <h3 style="font-size:15px;margin:34px 0 12px">Alsace in detail</h3>
   <div id="map-alsace"></div>
-  <div class="map-note">Everything within twenty minutes of the Friday and Saturday base. Green pins are the detours.</div>
+  <div class="map-note">Everything within twenty minutes of the Friday and Saturday base. Green pins are the detours and the caveaux. Zoom in on Wettolsheim: the two estates there sit 400 m apart and overlap at this scale. Haut-Kœnigsbourg is 40 minutes further north, off this map but in the list below.</div>
 
   <div class="addr" id="addrlist"></div>
 
   <h2 class="sec">Day by day</h2>
-
   <div class="tabs" role="tablist">
-    <button class="tab active" role="tab" aria-selected="true" aria-controls="p5" id="t5">Five days<small>Wed 12 to Sun 16, night in Trier</small></button>
-    <button class="tab" role="tab" aria-selected="false" aria-controls="p4" id="t4">Four days<small>Thu 13 to Sun 16, Trier as a stop</small></button>
+    <button class="tab active" role="tab" aria-selected="true" aria-controls="p5" id="t5">Two nights on the Moselle<small>Booked. Thursday is a wine day.</small></button>
+    <button class="tab" role="tab" aria-selected="false" aria-controls="p4" id="t4">One night on the Moselle<small>Strasbourg overnight instead</small></button>
   </div>
 
   <div class="tabwrap">
 
-  <!-- ============ FIVE DAYS ============ -->
+  <!-- ============ TWO MOSELLE NIGHTS ============ -->
   <div class="panel" id="p5" role="tabpanel" aria-labelledby="t5">
 
   <div class="variant-note">
-    <b>Four nights, three bases.</b> The gentlest version. Trier gets a proper evening and an unhurried morning, and no single day is heavy except the drive home.
+    <b>Two bases, four nights.</b> Schweich on the Moselle for Wednesday and Thursday, Wettolsheim in Alsace for Friday and Saturday. Thursday becomes a full day off the road: a walk in the morning, a tasting in the afternoon. Strasbourg turns into a three-hour stop on Friday rather than a place you sleep.
   </div>
 
   <div class="day">
     <div class="day-head">
       <span class="badge">Wed 12 Aug</span>
-      <h3>Den Bosch → Trier</h3>
-      <span class="drive">305 km · ±3 h 10</span>
+      <h3>Den Bosch → Schweich</h3>
+      <span class="drive">295 km · ±3 h 05</span>
     </div>
-    <p class="lead">An easy transfer day. You arrive early enough to walk into town and eat properly.</p>
+    <p class="lead">An easy transfer day. Trier sits twenty minutes from the campsite, so the first evening can be Roman if you still have the legs for it.</p>
     <ul class="sched">
-      <li><span class="t">14:30</span><span class="d"><strong>Leave Vughterstraat.</strong> <span>Route via Eindhoven, Aachen and Luxembourg. Fill up in Luxembourg, it saves a lot.</span></span></li>
-      <li><span class="t">16:30</span><span class="d"><strong>Coffee stop</strong> <span>somewhere near the Luxembourg border.</span></span></li>
-      <li><span class="t">18:00</span><span class="d"><strong>Arrive in Trier.</strong> <span>Check in, drop the bags.</span></span></li>
-      <li><span class="t">19:00</span><span class="d"><strong>Evening walk to the Hauptmarkt and Porta Nigra,</strong> <span>then dinner on a terrace by the square. A Moselle Riesling to go with it.</span></span></li>
+      <li><span class="t">14:00</span><span class="d"><strong>Leave Vughterstraat.</strong> <span>Route via Eindhoven, Aachen and Luxembourg. Fill up in Luxembourg, it saves a lot.</span></span></li>
+      <li><span class="t">16:00</span><span class="d"><strong>Coffee stop</strong> <span>somewhere near the Luxembourg border.</span></span></li>
+      <li><span class="t">17:15</span><span class="d"><strong>Arrive at Camping Zum Fährturm,</strong> <span>Am Yachthafen, Schweich. Pitch up, walk the dog along the marina.</span></span></li>
+      <li><span class="t">18:30</span><span class="d"><strong>Into Trier</strong> <span>(20 min). Porta Nigra in evening light, a wander round the Hauptmarkt, dinner on a terrace.</span></span></li>
+      <li><span class="t">—</span><span class="d"><strong>Or stay put.</strong> <span>The campsite has its own restaurant, Zum Fährturm, right by the water. Trier can wait for Friday morning on the way out.</span></span></li>
     </ul>
-    <div class="sleep"><b>Sleep:</b> in Trier itself (everything walkable, easiest for a car-free evening), or more romantically along the Moselle in Trittenheim, Piesport or Neumagen-Dhron, 25 to 35 minutes away.</div>
+    <div class="sleep"><b>Sleep:</b> Camping Zum Fährturm, Schweich. Booked.</div>
   </div>
 
   <div class="day">
     <div class="day-head">
       <span class="badge">Thu 13 Aug</span>
-      <h3>Trier → Strasbourg</h3>
-      <span class="drive">230 km · ±2 h 20</span>
+      <h3>Moselle day: walking and Riesling</h3>
+      <span class="drive">30 to 90 km locally</span>
     </div>
-    <p class="lead">Roman Trier in the morning, drive on after lunch. You are in Strasbourg well before aperitif hour.</p>
+    <p class="lead">The day the second night buys you. Vineyard paths in the morning while it is still cool, then a cellar in the afternoon.</p>
     <ul class="sched">
-      <li><span class="t">09:30</span><span class="d"><strong>Porta Nigra</strong> <span>(worth going inside), then the Dom and the Konstantinbasilika.</span></span></li>
-      <li><span class="t">11:30</span><span class="d"><strong>Kaiserthermen or the amphitheatre,</strong> <span>depending on how much Roman you can take.</span></span></li>
-      <li><span class="t">12:30</span><span class="d"><strong>Lunch</strong> <span>in the old town.</span></span></li>
-      <li><span class="t">14:00</span><span class="d"><strong>Drive to Strasbourg</strong> <span>via Saarbrücken. Park in a garage or a P+R, not in the centre.</span></span></li>
-      <li><span class="t">16:30</span><span class="d"><strong>Check in, then out into the city.</strong> <span>Cathedral, astronomical clock, Petite France.</span></span></li>
-      <li><span class="t">19:30</span><span class="d"><strong>Dinner at a winstub</strong> <span>with a bottle of Alsatian. Plenty of them in and around Petite France.</span></span></li>
+      <li><span class="t">09:15</span><span class="d"><strong>Walk the Rundweg Moselblick (R4)</strong> <span>straight from Schweich. 9.2 km, about 2 h 45, 258 m of climb along the top edge of the vineyards with views over the Moselle at Longuich, Kirsch and Riol. Fransje can run here, see the note below.</span></span></li>
+      <li><span class="t">12:30</span><span class="d"><strong>Lunch,</strong> <span>back at the campsite restaurant or in Longuich.</span></span></li>
+      <li><span class="t">15:00</span><span class="d"><strong>Wine tasting.</strong> <span>Three options depending on how far you want to go, from five minutes to forty-five. See the Moselle wine section below.</span></span></li>
+      <li><span class="t">18:30</span><span class="d"><strong>Back at camp.</strong> <span>Cook something, open one of today's bottles.</span></span></li>
     </ul>
-    <div class="sleep"><b>Sleep:</b> central Strasbourg, around the Grande Île or Petite France. Check in advance whether the hotel sorts out parking.</div>
+    <div class="sleep"><b>Sleep:</b> Camping Zum Fährturm, second night.</div>
   </div>
 
   <div class="day">
     <div class="day-head">
       <span class="badge">Fri 14 Aug</span>
-      <h3>Strasbourg → Wettolsheim</h3>
-      <span class="drive">75 km · ±1 h</span>
+      <h3>Schweich → Strasbourg → Wettolsheim</h3>
+      <span class="drive">300 km · ±3 h 20</span>
     </div>
-    <p class="lead">Wine day. Deliberately on Friday, because tomorrow is a public holiday and the estate is likely to be closed.</p>
+    <p class="lead">The transfer day, broken by three hours in Strasbourg. Leave on time and the Alsace tasting still fits comfortably into the afternoon.</p>
     <ul class="sched">
-      <li><span class="t">09:00</span><span class="d"><strong>Slow morning in Strasbourg.</strong> <span>Market, coffee, maybe a boat trip on the Ill.</span></span></li>
-      <li><span class="t">11:30</span><span class="d"><strong>Head south.</strong> <span>Take the A35, or if you have time, the Route des Vins past Obernai and Riquewihr.</span></span></li>
-      <li><span class="t">13:00</span><span class="d"><strong>Lunch on the way,</strong> <span>in Kaysersberg or Riquewihr for instance.</span></span></li>
-      <li><span class="t">15:00</span><span class="d"><strong>Tasting in Wettolsheim.</strong> <span>By appointment, see below.</span></span></li>
-      <li><span class="t">17:00</span><span class="d"><strong>Check in</strong> <span>in Wettolsheim, Eguisheim or Colmar.</span></span></li>
-      <li><span class="t">19:30</span><span class="d"><strong>Dinner in Colmar or Eguisheim.</strong> <span>Eguisheim is five minutes away and looks like a fairy tale after dark.</span></span></li>
+      <li><span class="t">08:30</span><span class="d"><strong>Break camp and go.</strong> <span>Via Saarbrücken. If you skipped Trier on Wednesday, take twenty minutes for the Porta Nigra on the way out, it is barely a detour.</span></span></li>
+      <li><span class="t">11:15</span><span class="d"><strong>Strasbourg.</strong> <span>Park in a garage or a P+R, not in the centre. Cathedral, astronomical clock, Petite France.</span></span></li>
+      <li><span class="t">12:30</span><span class="d"><strong>Lunch</strong> <span>at a winstub in or around Petite France. This is the good meal Strasbourg was on the list for.</span></span></li>
+      <li><span class="t">14:15</span><span class="d"><strong>On to Wettolsheim.</strong> <span>The A35 south is toll-free and quick.</span></span></li>
+      <li><span class="t">15:30</span><span class="d"><strong>Arrive, pitch up or check in.</strong></span></li>
+      <li><span class="t">16:30</span><span class="d"><strong>Tasting at Domaine Barmès-Buecher.</strong> <span>By appointment. Ask for late afternoon when you email.</span></span></li>
+      <li><span class="t">19:30</span><span class="d"><strong>Dinner in Eguisheim,</strong> <span>five minutes away and sprookjesachtig after dark.</span></span></li>
     </ul>
-    <div class="sleep"><b>Sleep:</b> two nights in the same place, which saves hauling luggage around. Wettolsheim is quiet, Eguisheim is the prettiest village, Colmar has the most going on.</div>
+    <div class="sleep"><b>Sleep:</b> Wettolsheim, Eguisheim or Colmar. Two nights in the same spot.</div>
   </div>
 
   <div class="day">
@@ -373,8 +376,9 @@
     <ul class="sched">
       <li><span class="t">09:30</span><span class="d"><strong>Colmar</strong> <span>in the morning, while it is still calm. Petite Venise and the Unterlinden.</span></span></li>
       <li><span class="t">12:30</span><span class="d"><strong>Lunch</strong> <span>on a terrace.</span></span></li>
-      <li><span class="t">14:30</span><span class="d"><strong>Route des Vins heading north:</strong> <span>Eguisheim, Turckheim, Kaysersberg, Riquewihr.</span></span></li>
-      <li><span class="t">16:00</span><span class="d"><strong>Alternative:</strong> <span>Château du Haut-Kœnigsbourg (40 min) or a walk through the vineyards up to the Grand Cru Steingrubler, right behind Wettolsheim.</span></span></li>
+      <li><span class="t">14:30</span><span class="d"><strong>Caveau one: Schoepfer-Muller,</strong> <span>2 minutes from base on the route du Vin. Walk-in cellar, but check by phone that they open on the fifteenth.</span></span></li>
+      <li><span class="t">16:00</span><span class="d"><strong>Caveau two: Wolfberger in Eguisheim.</strong> <span>Free tasting, dogs allowed inside, and open on holidays. This is the fallback if Schoepfer-Muller turns out shut.</span></span></li>
+      <li><span class="t">17:30</span><span class="d"><strong>Or stretch the legs instead:</strong> <span>the vineyard path up to the Grand Cru Steingrubler starts right behind Wettolsheim. An hour up, views to the Black Forest on a clear day, and Fransje can run.</span></span></li>
       <li><span class="t">19:30</span><span class="d"><strong>Last evening</strong> <span>in Colmar or Eguisheim. Busy, it being a holiday, so eat a little earlier or a little later.</span></span></li>
     </ul>
     <div class="sleep"><b>Sleep:</b> same address as last night. Pack up this evening.</div>
@@ -389,52 +393,66 @@
     <p class="lead">The one long day. Leaving early is the difference between home at four and home at seven.</p>
     <ul class="sched">
       <li><span class="t">09:00</span><span class="d"><strong>Breakfast and check out.</strong></span></li>
-      <li><span class="t">09:45</span><span class="d"><strong>Depart.</strong> <span>Route via Strasbourg, Karlsruhe, Cologne. Or via Metz and Luxembourg if you want one more cheap tank.</span></span></li>
-      <li><span class="t">12:30</span><span class="d"><strong>Lunch stop,</strong> <span>roughly halfway.</span></span></li>
-      <li><span class="t">15:30</span><span class="d"><strong>Home.</strong> <span>Well before the end of the afternoon.</span></span></li>
+      <li><span class="t">09:45</span><span class="d"><strong>Depart.</strong> <span>Route via Strasbourg, Karlsruhe, Cologne. Toll-free the whole way.</span></span></li>
+      <li><span class="t">12:30</span><span class="d"><strong>Lunch stop,</strong> <span>roughly halfway. Good moment to let the dog out properly.</span></span></li>
+      <li><span class="t">15:30</span><span class="d"><strong>Home.</strong></span></li>
     </ul>
     <div class="sleep"><b>Note:</b> mid-August is when France swaps its holidaymakers over, and the Sunday after 15 August can be busy heading north. Leave before ten.</div>
   </div>
 
-  <h3 style="font-size:15px;margin:34px 0 12px">Driving times, five-day version</h3>
+  <h3 style="font-size:15px;margin:34px 0 12px">Driving times</h3>
   <table>
     <thead><tr><th>Leg</th><th>Distance</th><th>Driving time</th><th>Day</th></tr></thead>
     <tbody>
-      <tr><td>Den Bosch → Trier</td><td class="num">305 km</td><td class="num">3 h 10</td><td class="num">Wed 12</td></tr>
-      <tr><td>Trier → Strasbourg</td><td class="num">230 km</td><td class="num">2 h 20</td><td class="num">Thu 13</td></tr>
-      <tr><td>Strasbourg → Wettolsheim</td><td class="num">75 km</td><td class="num">1 h 00</td><td class="num">Fri 14</td></tr>
-      <tr><td>Local driving in Alsace</td><td class="num">±70 km</td><td class="num">1 h 30</td><td class="num">Sat 15</td></tr>
+      <tr><td>Den Bosch → Schweich</td><td class="num">295 km</td><td class="num">3 h 05</td><td class="num">Wed 12</td></tr>
+      <tr><td>Local, Moselle</td><td class="num">±60 km</td><td class="num">1 h 15</td><td class="num">Thu 13</td></tr>
+      <tr><td>Schweich → Strasbourg → Wettolsheim</td><td class="num">300 km</td><td class="num">3 h 20</td><td class="num">Fri 14</td></tr>
+      <tr><td>Local, Alsace</td><td class="num">±70 km</td><td class="num">1 h 30</td><td class="num">Sat 15</td></tr>
       <tr><td>Wettolsheim → Den Bosch</td><td class="num">545 km</td><td class="num">5 h 30</td><td class="num">Sun 16</td></tr>
-      <tr class="total"><td>Total</td><td class="num">±1,225 km</td><td class="num">±13 h 30</td><td class="num">4 nights</td></tr>
+      <tr class="total"><td>Total</td><td class="num">±1,270 km</td><td class="num">±14 h 40</td><td class="num">4 nights</td></tr>
     </tbody>
   </table>
 
-  </div><!-- /five days -->
+  </div><!-- /two moselle nights -->
 
-  <!-- ============ FOUR DAYS ============ -->
+  <!-- ============ ONE MOSELLE NIGHT ============ -->
   <div class="panel" id="p4" role="tabpanel" aria-labelledby="t4" hidden>
 
   <div class="variant-note">
-    <b>Three nights, two bases.</b> Same route, same kilometres, one night fewer. Trier becomes a two-hour stop rather than a stay, which buys you a whole day back at the cost of a long first day behind the wheel. The Alsace part is untouched, so the wine days survive intact.
+    <b>If the second Moselle night does not happen.</b> Same five days, but Thursday becomes a driving day and Strasbourg gets its evening back. You trade a Moselle walk and a Moselle tasting for a night in a proper city. Worth knowing the shape of it before you commit to the second night.
+  </div>
+
+  <div class="day">
+    <div class="day-head">
+      <span class="badge">Wed 12 Aug</span>
+      <h3>Den Bosch → Schweich</h3>
+      <span class="drive">295 km · ±3 h 05</span>
+    </div>
+    <p class="lead">Identical to the other version. Arrive, settle, and Trier is twenty minutes away for the evening.</p>
+    <ul class="sched">
+      <li><span class="t">14:00</span><span class="d"><strong>Leave Vughterstraat.</strong> <span>Fill up in Luxembourg.</span></span></li>
+      <li><span class="t">17:15</span><span class="d"><strong>Arrive at Camping Zum Fährturm.</strong></span></li>
+      <li><span class="t">18:30</span><span class="d"><strong>Trier or the campsite restaurant.</strong> <span>In this version Trier is better done tomorrow morning, when you have proper time for it.</span></span></li>
+    </ul>
+    <div class="sleep"><b>Sleep:</b> Camping Zum Fährturm, Schweich.</div>
   </div>
 
   <div class="day">
     <div class="day-head">
       <span class="badge">Thu 13 Aug</span>
-      <h3>Den Bosch → Trier → Strasbourg</h3>
-      <span class="drive">535 km · ±5 h 30</span>
+      <h3>Trier, then on to Strasbourg</h3>
+      <span class="drive">240 km · ±2 h 40</span>
     </div>
-    <p class="lead">The long day, and the price of the shorter trip. Leave early and Trier is still a proper stop rather than a service station with Roman ruins.</p>
+    <p class="lead">Roman morning, then south. You are in Strasbourg well before aperitif hour.</p>
     <ul class="sched">
-      <li><span class="t">08:00</span><span class="d"><strong>Leave Vughterstraat.</strong> <span>Route via Eindhoven, Aachen and Luxembourg. Fill up in Luxembourg, it saves a lot.</span></span></li>
-      <li><span class="t">11:15</span><span class="d"><strong>Arrive in Trier.</strong> <span>Park at the Porta Nigra, everything worth seeing is within ten minutes on foot.</span></span></li>
-      <li><span class="t">11:30</span><span class="d"><strong>Porta Nigra and the Hauptmarkt.</strong> <span>Go inside the gate, it takes twenty minutes and it is the reason to stop here at all.</span></span></li>
-      <li><span class="t">12:45</span><span class="d"><strong>Lunch</strong> <span>on the Hauptmarkt.</span></span></li>
-      <li><span class="t">14:00</span><span class="d"><strong>On to Strasbourg</strong> <span>via Saarbrücken. Park in a garage or a P+R, not in the centre.</span></span></li>
-      <li><span class="t">16:30</span><span class="d"><strong>Check in, then out into the city.</strong> <span>Cathedral, astronomical clock, Petite France.</span></span></li>
-      <li><span class="t">19:30</span><span class="d"><strong>Dinner at a winstub</strong> <span>with a bottle of Alsatian. Plenty of them in and around Petite France.</span></span></li>
+      <li><span class="t">09:00</span><span class="d"><strong>Break camp, drive into Trier</strong> <span>(20 min).</span></span></li>
+      <li><span class="t">09:45</span><span class="d"><strong>Porta Nigra,</strong> <span>then the Dom and the Konstantinbasilika.</span></span></li>
+      <li><span class="t">12:00</span><span class="d"><strong>Lunch</strong> <span>in the old town.</span></span></li>
+      <li><span class="t">13:30</span><span class="d"><strong>On to Strasbourg</strong> <span>via Saarbrücken.</span></span></li>
+      <li><span class="t">16:00</span><span class="d"><strong>Check in, then out into the city.</strong> <span>Cathedral, astronomical clock, Petite France.</span></span></li>
+      <li><span class="t">19:30</span><span class="d"><strong>Dinner at a winstub</strong> <span>with a bottle of Alsatian.</span></span></li>
     </ul>
-    <div class="sleep"><b>Sleep:</b> central Strasbourg, around the Grande Île or Petite France. Check in advance whether the hotel sorts out parking.</div>
+    <div class="sleep"><b>Sleep:</b> central Strasbourg, or Camping de Strasbourg at Montagne Verte with a tram into town.</div>
   </div>
 
   <div class="day">
@@ -443,16 +461,15 @@
       <h3>Strasbourg → Wettolsheim</h3>
       <span class="drive">75 km · ±1 h</span>
     </div>
-    <p class="lead">Wine day, unchanged from the longer version. Deliberately on Friday, because tomorrow is a public holiday and the estate is likely to be closed.</p>
+    <p class="lead">A short day, so the tasting can sit in the middle of the afternoon rather than at the end of it.</p>
     <ul class="sched">
       <li><span class="t">09:00</span><span class="d"><strong>Slow morning in Strasbourg.</strong> <span>Market, coffee, maybe a boat trip on the Ill.</span></span></li>
-      <li><span class="t">11:30</span><span class="d"><strong>Head south.</strong> <span>Take the A35, or if you have time, the Route des Vins past Obernai and Riquewihr.</span></span></li>
-      <li><span class="t">13:00</span><span class="d"><strong>Lunch on the way,</strong> <span>in Kaysersberg or Riquewihr for instance.</span></span></li>
-      <li><span class="t">15:00</span><span class="d"><strong>Tasting in Wettolsheim.</strong> <span>By appointment, see below.</span></span></li>
-      <li><span class="t">17:00</span><span class="d"><strong>Check in</strong> <span>in Wettolsheim, Eguisheim or Colmar.</span></span></li>
-      <li><span class="t">19:30</span><span class="d"><strong>Dinner in Colmar or Eguisheim.</strong> <span>Eguisheim is five minutes away and looks like a fairy tale after dark.</span></span></li>
+      <li><span class="t">11:30</span><span class="d"><strong>Head south,</strong> <span>A35 or the Route des Vins past Obernai and Riquewihr.</span></span></li>
+      <li><span class="t">13:00</span><span class="d"><strong>Lunch on the way,</strong> <span>Kaysersberg or Riquewihr.</span></span></li>
+      <li><span class="t">15:00</span><span class="d"><strong>Tasting at Domaine Barmès-Buecher.</strong> <span>By appointment.</span></span></li>
+      <li><span class="t">19:30</span><span class="d"><strong>Dinner in Colmar or Eguisheim.</strong></span></li>
     </ul>
-    <div class="sleep"><b>Sleep:</b> two nights in the same place. Wettolsheim is quiet, Eguisheim is the prettiest village, Colmar has the most going on.</div>
+    <div class="sleep"><b>Sleep:</b> Wettolsheim, Eguisheim or Colmar.</div>
   </div>
 
   <div class="day">
@@ -461,15 +478,15 @@
       <h3>Alsace, free day</h3>
       <span class="drive">50 to 90 km locally</span>
     </div>
-    <p class="lead">Public holiday in France. Shops and many estates closed, but villages, terraces and restaurants open and busy. A good day for wandering rather than planning.</p>
+    <p class="lead">Public holiday in France. Same as the other version: villages and terraces open, shops and estates largely closed.</p>
     <ul class="sched">
-      <li><span class="t">09:30</span><span class="d"><strong>Colmar</strong> <span>in the morning, while it is still calm. Petite Venise and the Unterlinden.</span></span></li>
-      <li><span class="t">12:30</span><span class="d"><strong>Lunch</strong> <span>on a terrace.</span></span></li>
-      <li><span class="t">14:30</span><span class="d"><strong>Route des Vins heading north:</strong> <span>Eguisheim, Turckheim, Kaysersberg, Riquewihr.</span></span></li>
-      <li><span class="t">16:00</span><span class="d"><strong>Alternative:</strong> <span>Château du Haut-Kœnigsbourg (40 min) or a walk through the vineyards up to the Grand Cru Steingrubler.</span></span></li>
-      <li><span class="t">19:30</span><span class="d"><strong>Last evening</strong> <span>in Colmar or Eguisheim. Busy, it being a holiday, so eat a little earlier or a little later.</span></span></li>
+      <li><span class="t">09:30</span><span class="d"><strong>Colmar</strong> <span>early, while it is calm.</span></span></li>
+      <li><span class="t">14:30</span><span class="d"><strong>Caveau one: Schoepfer-Muller,</strong> <span>2 minutes away on the route du Vin. Ring ahead about the holiday.</span></span></li>
+      <li><span class="t">16:00</span><span class="d"><strong>Caveau two: Wolfberger in Eguisheim.</strong> <span>Free tasting, dogs welcome, open on holidays.</span></span></li>
+      <li><span class="t">17:30</span><span class="d"><strong>Or the vineyard walk</strong> <span>up to the Grand Cru Steingrubler behind Wettolsheim.</span></span></li>
+      <li><span class="t">19:30</span><span class="d"><strong>Last evening</strong> <span>in Colmar or Eguisheim.</span></span></li>
     </ul>
-    <div class="sleep"><b>Sleep:</b> same address as last night. Pack up this evening.</div>
+    <div class="sleep"><b>Sleep:</b> same address as last night.</div>
   </div>
 
   <div class="day">
@@ -478,36 +495,36 @@
       <h3>Wettolsheim → Den Bosch</h3>
       <span class="drive">545 km · ±5 h 30</span>
     </div>
-    <p class="lead">Identical to the longer version. Leaving early is the difference between home at four and home at seven.</p>
+    <p class="lead">Identical to the other version. Leave before ten.</p>
     <ul class="sched">
-      <li><span class="t">09:00</span><span class="d"><strong>Breakfast and check out.</strong></span></li>
-      <li><span class="t">09:45</span><span class="d"><strong>Depart.</strong> <span>Route via Strasbourg, Karlsruhe, Cologne. Or via Metz and Luxembourg if you want one more cheap tank.</span></span></li>
-      <li><span class="t">12:30</span><span class="d"><strong>Lunch stop,</strong> <span>roughly halfway.</span></span></li>
-      <li><span class="t">15:30</span><span class="d"><strong>Home.</strong> <span>Well before the end of the afternoon.</span></span></li>
+      <li><span class="t">09:45</span><span class="d"><strong>Depart.</strong> <span>Via Strasbourg, Karlsruhe, Cologne. Toll-free.</span></span></li>
+      <li><span class="t">15:30</span><span class="d"><strong>Home.</strong></span></li>
     </ul>
-    <div class="sleep"><b>Note:</b> mid-August is when France swaps its holidaymakers over, and the Sunday after 15 August can be busy heading north. Leave before ten.</div>
+    <div class="sleep"><b>Note:</b> the Sunday after 15 August can be busy heading north.</div>
   </div>
 
-  <h3 style="font-size:15px;margin:34px 0 12px">Driving times, four-day version</h3>
+  <h3 style="font-size:15px;margin:34px 0 12px">Driving times</h3>
   <table>
     <thead><tr><th>Leg</th><th>Distance</th><th>Driving time</th><th>Day</th></tr></thead>
     <tbody>
-      <tr><td>Den Bosch → Trier → Strasbourg</td><td class="num">535 km</td><td class="num">5 h 30</td><td class="num">Thu 13</td></tr>
+      <tr><td>Den Bosch → Schweich</td><td class="num">295 km</td><td class="num">3 h 05</td><td class="num">Wed 12</td></tr>
+      <tr><td>Schweich → Trier → Strasbourg</td><td class="num">240 km</td><td class="num">2 h 40</td><td class="num">Thu 13</td></tr>
       <tr><td>Strasbourg → Wettolsheim</td><td class="num">75 km</td><td class="num">1 h 00</td><td class="num">Fri 14</td></tr>
-      <tr><td>Local driving in Alsace</td><td class="num">±70 km</td><td class="num">1 h 30</td><td class="num">Sat 15</td></tr>
+      <tr><td>Local, Alsace</td><td class="num">±70 km</td><td class="num">1 h 30</td><td class="num">Sat 15</td></tr>
       <tr><td>Wettolsheim → Den Bosch</td><td class="num">545 km</td><td class="num">5 h 30</td><td class="num">Sun 16</td></tr>
-      <tr class="total"><td>Total</td><td class="num">±1,225 km</td><td class="num">±13 h 30</td><td class="num">3 nights</td></tr>
+      <tr class="total"><td>Total</td><td class="num">±1,225 km</td><td class="num">±13 h 45</td><td class="num">4 nights</td></tr>
     </tbody>
   </table>
 
-  </div><!-- /four days -->
+  </div><!-- /one moselle night -->
   </div><!-- /tabwrap -->
 
   <h2 class="sec">What goes wrong if you do nothing</h2>
 
   <div class="flag warn">
     <h4>Saturday 15 August is a national holiday in France</h4>
-    <p>Assumption Day. Supermarkets, shops and a fair share of wine estates are closed, while restaurants and villages are extra busy. That is why the tasting sits on Friday and not Saturday.</p>
+    <p>Assumption Day. Supermarkets, shops and a fair share of wine estates are closed, while restaurants and villages are extra busy. That is why the serious tasting sits on Friday and not Saturday.</p>
+    <p>It does not write Saturday off, though. Larger tourist-facing cellars like Wolfberger in Eguisheim stay open on the holiday, and some small estates open precisely because it is the busiest day of the year. It is the family domaines you cannot assume anything about, which is why the Saturday plan has a fallback built into it.</p>
   </div>
 
   <div class="flag warn">
@@ -520,7 +537,66 @@
     <p>You need a Crit'Air sticker to drive into the centre, Dutch plates included. It costs a few euros but delivery easily takes one to two weeks, so order it now rather than the week itself. Use the official French site only, plenty of resellers charge double.</p>
   </div>
 
-  <h2 class="sec">Wine tasting in Wettolsheim</h2>
+  <h2 class="sec">Thursday: the walk</h2>
+
+  <div class="grid">
+    <div class="card">
+      <div class="meta">First choice · starts in Schweich</div>
+      <h4>Rundweg Moselblick (R4)</h4>
+      <p>9.2 km, about 2 h 45, 258 m of climb. Runs along the top edge of the vineyards with long views over the Moselle at Longuich, Kirsch and Riol, through the little wine hamlet of Longen, with a rest spot above the Longuich bridge. Easy to moderate, but wear proper shoes: a lot of it is loose vineyard track.</p>
+      <p style="margin-top:8px">Starts from the campsite, so no driving at all.</p>
+    </div>
+    <div class="card">
+      <div class="meta">Longer · starts in Longuich, 5 min</div>
+      <h4>Moselsteig Seitensprung Longuicher Sauerbrunnen</h4>
+      <p>12.6 km, about 3 h 20, 153 m of climb. More varied and more shaded: a Roman villa, the mineral spring it is named after, stretches of old woodland, then terraced vineyards and viewpoints. Circular, from the car park at the In den Kreuzfeldern roundabout.</p>
+      <p style="margin-top:8px">Better choice if Thursday turns out hot.</p>
+    </div>
+  </div>
+
+  <div class="flag info">
+    <h4>Fransje can run here, with two caveats</h4>
+    <p>Rhineland-Palatinate has no blanket leash law for ordinary forest and field. Dogs need to be under control, and that is the whole requirement. Nature reserves are leashed year round and some places impose seasonal rules during the breeding season, but that season is over well before mid-August, and neither of these routes crosses a reserve.</p>
+    <p>The two things to actually watch: the grapes are close to harvest in August, so keep to the paths and out of the rows, growers are understandably touchy about it. And there is game in the woodland stretches, which is the real reason to be able to call the dog back rather than just hope.</p>
+  </div>
+
+  <h2 class="sec">Thursday: Moselle wine</h2>
+
+  <div class="flag tip">
+    <h4>This is the region for the bottles you are missing</h4>
+    <p>Estate-level Riesling from a serious Moselle producer sits at €9 to €14, Kabinett at €12 to €16, and cellar door is usually a euro or two under shop price. Grans-Fassian's Mineralschiefer Riesling trocken retails at €11.50, to give one concrete marker. Alsace at that price is decent village wine; the Moselle at that price is the real thing. It fills exactly the gap under your €20 to €25 shelf.</p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="meta">5 minutes · Longuich</div>
+      <h4>Vinothek Alte Burg &amp; Longen-Schlöder</h4>
+      <p>Two doors in one village. Schlöder-Thielen at the Alte Burg does steep-slope Riesling and vintage Sekt, and is a Slow Food member. Longen-Schlöder up the road has a large vinothek, a terrace over the vineyards and a kitchen.</p>
+      <p style="margin-top:8px"><b>+49 6502 99 41 11</b><br>Burgstraße 3, 54340 Longuich</p>
+      <p style="margin-top:8px">Easiest option. Walk, lunch, taste, no real driving.</p>
+    </div>
+    <div class="card">
+      <div class="meta">25 minutes · Leiwen</div>
+      <h4>Carl Loewen, Grans-Fassian, St. Urbans-Hof</h4>
+      <p>The serious stop. Three of the Middle Moselle's best Riesling producers in one village. Loewen tastes Saturdays 13:00 to 16:00 or by arrangement, so Thursday needs a call or a mail first. Grans-Fassian is a VDP estate.</p>
+      <p style="margin-top:8px">Matthiasstraße 30, 54340 Leiwen<br><a href="https://weingut-loewen.de/" target="_blank" rel="noopener">weingut-loewen.de</a></p>
+      <p style="margin-top:8px">Best wine, but ring ahead.</p>
+    </div>
+    <div class="card">
+      <div class="meta">45 minutes · Bernkastel-Kues</div>
+      <h4>Vinothek im Gewölbe des St. Nikolaus-Hospital</h4>
+      <p>The many-houses option you were after: around 100 wines from the Moselle, Saar and Ruwer, from Qualitätswein up to Eiswein, poured in the historic vaulted cellars of a fifteenth-century hospital. Shop attached, so you buy what you liked.</p>
+      <p style="margin-top:8px"><b>Daily 10:00 to 18:00, no appointment</b><br>Cusanusstraße 2, 54470 Bernkastel-Kues<br>+49 6531 4141</p>
+      <p style="margin-top:8px">Furthest, but the only one where you compare growers side by side.</p>
+    </div>
+  </div>
+
+  <div class="flag warn">
+    <h4>Thursday is the awkward day for small estates</h4>
+    <p>Most Moselle growers keep their cellar door open Saturdays and take appointments the rest of the week. Bernkastel is the one address on this list that is reliably open on a Thursday afternoon without arranging anything. If you would rather have Leiwen, send a mail this week: a request for Thursday 13 August, mid-afternoon, two people, is almost always fine with notice.</p>
+  </div>
+
+  <h2 class="sec">Friday: wine tasting in Wettolsheim</h2>
 
   <div class="flag wine">
     <h4>Book now, not on the day</h4>
@@ -560,6 +636,44 @@
     </div>
   </div>
 
+  <h2 class="sec">Saturday: two more caveaux</h2>
+
+  <div class="flag warn">
+    <h4>This is the day the holiday bites, so ring ahead</h4>
+    <p>15 August is Assumption Day and small family estates are a coin flip: some shut entirely, some open precisely because it is the busiest tourist day of the year. The two below are picked to cover both cases. Call Schoepfer-Muller now and ask about the fifteenth specifically, then you know well in advance whether Saturday needs a plan B.</p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="meta">2 minutes · Wettolsheim</div>
+      <h4>Schoepfer-Muller</h4>
+      <p>Same family since Louis Schoepfer arrived from Switzerland in 1656, run by Alexis Schoepfer since 2021, HVE3 certified. Crémant and Pinot Noir alongside the whites. The sign on the street reads dégustation, vente, caveau, so it is a walk-in cellar rather than an appointment-only estate.</p>
+      <p style="margin-top:10px">
+        <b>4 route du Vin<br>68920 Wettolsheim</b><br>
+        +33 3 89 79 94 24<br>
+        <a href="mailto:cave@schoepfer-muller.fr?subject=Ouverture%20samedi%2015%20ao%C3%BBt%202026">cave@schoepfer-muller.fr</a>
+      </p>
+      <p style="margin-top:10px"><a href="https://schoepfer-muller.fr/" target="_blank" rel="noopener">schoepfer-muller.fr</a></p>
+      <p style="margin-top:10px">Opening hours are published nowhere. Ring before you count on it.</p>
+    </div>
+    <div class="card">
+      <div class="meta">5 minutes · Eguisheim</div>
+      <h4>Cave Wolfberger</h4>
+      <p>One of the largest cellars in Alsace, going since 1902, and the safe bet for a public holiday: a big tourist-facing operation rather than a family kitchen table. Free entry and free tasting, a scent table to play with, AOC Alsace through Grands Crus, Crémant and late harvest. Dogs are welcome inside, which settles the Fransje question.</p>
+      <p style="margin-top:10px">
+        <b>6 Grand Rue<br>68420 Eguisheim</b><br>
+        +33 3 89 22 20 46
+      </p>
+      <p style="margin-top:10px">Not the most soulful tasting of the trip, but the widest range at your price point, and it sits on the square you were eating on anyway.</p>
+    </div>
+  </div>
+
+  <div class="flag tip">
+    <h4>How the three Alsace tastings divide up</h4>
+    <p><b>Barmès-Buecher on Friday</b> is the one to take seriously: biodynamic, small, by appointment, and the wines are worth the €18 to €35 they cost. That is the splurge.</p>
+    <p><b>Schoepfer-Muller and Wolfberger on Saturday</b> are where the €7 to €14 bottles live, Wolfberger's Crémant especially. Between the Moselle on Thursday and these two on Saturday, the case that drives home should sit mostly in the bracket you were missing, with a few serious bottles on top.</p>
+  </div>
+
   <h2 class="sec" id="camper">If you take the camper instead</h2>
 
   <div class="flag info">
@@ -569,15 +683,15 @@
 
   <div class="grid">
     <div class="card">
-      <div class="meta">Wed 12 Aug · Trier</div>
-      <h4>Reisemobilpark Treviris</h4>
-      <p>Right on the Moselle, about fifteen minutes on foot across the bridge into the old town. Full services, open year round, no reservation needed. The obvious choice for a car-free evening.</p>
+      <div class="meta">Wed 12 &amp; Thu 13 Aug · Schweich</div>
+      <h4>Camping Zum Fährturm — booked</h4>
+      <p>On the Moselle at the marina, twenty minutes from Trier, with its own restaurant. €26 a night for a camper up to 7 m, and that includes two people, the dog, electricity, showers and WiFi.</p>
+      <p style="margin-top:8px">Am Yachthafen, 54338 Schweich<br>+49 6502 9130-0</p>
     </div>
     <div class="card">
-      <div class="meta">Thu 13 Aug · Strasbourg</div>
+      <div class="meta">Only in the one-night variant · Strasbourg</div>
       <h4>Camping de Strasbourg, Montagne Verte</h4>
-      <p>Four-star site west of the centre with a bus and tram connection straight into town, so you can have that bottle of Alsatian without thinking about it. Book this one, August fills up.</p>
-      <p style="margin-top:8px">Alternative: the aire at the Deux Rives youth hostel, closer in but plainer.</p>
+      <p>Four-star site west of the centre with a bus and tram connection straight into town. Only relevant if you skip the second Moselle night and sleep in Strasbourg instead. Book it, August fills up.</p>
     </div>
     <div class="card">
       <div class="meta">Fri 14 &amp; Sat 15 Aug · Alsace</div>
@@ -605,8 +719,8 @@
   <h2 class="sec">What it costs</h2>
 
   <div class="flag tip">
-    <h4>The camper is roughly €450 cheaper, and it is not the fuel that decides it</h4>
-    <p>A Ducato on diesel drinks about €110 more over the 1,225 km than a petrol car does. But four nights of peak-August hotels cost around €600 more than four nights of campsites and aires. The accommodation gap is four times the fuel gap, so it swallows the difference whole.</p>
+    <h4>The camper is roughly €370 cheaper, and it is not the fuel that decides it</h4>
+    <p>A Ducato on diesel drinks about €105 more over the 1,270 km than a petrol car does. But four nights of peak-August hotels cost around €480 more than two nights at Schweich and two at an Alsatian aire. The accommodation gap is nearly five times the fuel gap, so it swallows the difference whole.</p>
   </div>
 
   <table>
@@ -614,12 +728,13 @@
       <tr><th>Fixed costs, two people</th><th>Car, petrol</th><th>Camper, Ducato diesel</th></tr>
     </thead>
     <tbody>
-      <tr><td>Fuel, ±1,225 km</td><td class="num">€165 – 200<br><span style="font-size:12px">±86 L at 7.0 L/100 km</span></td><td class="num">€255 – 310<br><span style="font-size:12px">±135 L at 11 L/100 km</span></td></tr>
+      <tr><td>Fuel, ±1,270 km</td><td class="num">€170 – 205<br><span style="font-size:12px">±89 L at 7.0 L/100 km</span></td><td class="num">€265 – 320<br><span style="font-size:12px">±140 L at 11 L/100 km</span></td></tr>
       <tr><td>Tolls</td><td class="num">€0 – 20</td><td class="num">€0 – 30</td></tr>
       <tr><td>Crit'Air sticker</td><td class="num">€5</td><td class="num">€5</td></tr>
-      <tr><td>Four nights</td><td class="num">€520 – 730</td><td class="num">€95 – 115</td></tr>
-      <tr><td>Parking</td><td class="num">€30 – 50</td><td class="num">included</td></tr>
-      <tr class="total"><td>Total before spending money</td><td class="num">€720 – 1,005</td><td class="num">€355 – 460</td></tr>
+      <tr><td>Two nights Moselle</td><td class="num">€200 – 280</td><td class="num">€52<br><span style="font-size:12px">2 × €26, all in</span></td></tr>
+      <tr><td>Two nights Alsace</td><td class="num">€260 – 360</td><td class="num">€40 – 55</td></tr>
+      <tr><td>Parking</td><td class="num">€20 – 40</td><td class="num">included</td></tr>
+      <tr class="total"><td>Total before spending money</td><td class="num">€655 – 910</td><td class="num">€362 – 462</td></tr>
     </tbody>
   </table>
 
@@ -627,7 +742,7 @@
     <h4>Three things worth knowing about those numbers</h4>
     <p><b>This route is almost toll-free.</b> Nothing charges you between Den Bosch and Trier, the A35 through Alsace is free, and coming home through Germany costs nothing either. Only the Trier to Strasbourg leg has a tolled option (roughly €10 to €17 via Metz on the A4) and a toll-free one through Germany that takes about twenty minutes longer. A camper over two metres tall counts as toll class 2 in France, around one and a half times the car rate, which on this route means almost nothing.</p>
     <p><b>Filling up in Luxembourg is worth real money.</b> Petrol there is about €1.76 against €2.40 in the Netherlands, diesel €1.89 against €2.46. One tank makes the difference: roughly €35 saved on a 55-litre car tank, €51 on a 90-litre camper tank. It is on the way on day one, so there is no reason not to.</p>
-    <p><b>The four-day version changes little.</b> You lose one night, which is €110 to €150 off the car total and about €18 off the camper total. Same route, same fuel, so everything else stays put.</p>
+    <p><b>The second Moselle night is nearly free.</b> €26 in the camper, against a Strasbourg hotel night in mid-August at €150 to €220. Swapping the city night for a second night at Schweich pays for a good few bottles, and buys you the walk and the tasting on top.</p>
   </div>
 
   <h3 style="font-size:15px;margin:34px 0 12px">On top of that, and the same either way</h3>
@@ -670,13 +785,13 @@
   <h2 class="sec">To arrange, in order</h2>
 
   <ol class="check">
-    <li><b>Order the Crit'Air sticker</b><span>Official French site, delivery takes one to two weeks. Do this first.</span></li>
-    <li><b>Email Barmès-Buecher for Friday 14 August, around 15:00</b><span>info@barmes-buecher.com. Mention the number of people and whether you also want to buy.</span></li>
-    <li><b>Decide: hotels or camper</b><span>Everything below depends on this one call. Camper means less booking but more arriving early.</span></li>
-    <li><b>Hotels · book Trier or Moselle (1 night, Wed 12)</b><span>Central Trier for convenience, a Moselle village for the view.</span></li>
-    <li><b>Hotels · book Strasbourg (1 night, Thu 13)</b><span>Grande Île or Petite France. Ask about parking.</span></li>
-    <li><b>Hotels · book Alsace (2 nights, Fri 14 and Sat 15)</b><span>Wettolsheim, Eguisheim or Colmar. Mid-August is peak season, these sell out.</span></li>
-    <li><b>Camper · book Camping de Strasbourg, order France Passion</b><span>Trier and Eguisheim take you as you come. Strasbourg is the one to reserve, and the France Passion guide needs to arrive by post before you leave.</span></li>
+    <li><b>Order the Crit'Air sticker</b><span>Official French site only, €5 to €7, delivery one to two weeks. Longest lead time of anything here, so do it first.</span></li>
+    <li><b>Book the second night at Zum Fährturm</b><span>Wed 12 is done. Adding Thu 13 is what turns Thursday into the walk and the tasting. €26.</span></li>
+    <li><b>Email Barmès-Buecher for Friday 14 August, late afternoon</b><span>info@barmes-buecher.com. Ask for 16:30, since you are coming from Strasbourg that day. Mention two people and that you want to buy.</span></li>
+    <li><b>Sort out the Thursday tasting</b><span>Bernkastel needs nothing, just turn up between 10:00 and 18:00. For Leiwen, mail Carl Loewen this week for Thursday afternoon.</span></li>
+    <li><b>Ring Schoepfer-Muller about Saturday 15 August</b><span>+33 3 89 79 94 24. One question: are you open on the fifteenth? Wolfberger in Eguisheim is the fallback either way, so this is not a blocker, just worth knowing.</span></li>
+    <li><b>Book two nights in Alsace (Fri 14 and Sat 15)</b><span>Camper: the aire at Eguisheim takes no reservations, so arrive early afternoon. Hotel: book now, mid-August sells out.</span></li>
+    <li><b>Check the dog paperwork</b><span>EU pet passport, chip, rabies vaccination valid on the day of travel. Germany and France both want it.</span></li>
     <li><b>Green card, breakdown cover and warning triangle</b><span>Standard, but worth a quick check.</span></li>
   </ol>
 
@@ -689,16 +804,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
   var stops = [
-    {n:"S", label:"Start and finish &middot; Wed 12 and Sun 16 Aug", name:"Home, Den Bosch", addr:"Vughterstraat 130, 5211 GJ 's-Hertogenbosch", lat:51.6850, lng:5.2970, alt:false},
-    {n:"1", label:"Night 1 &middot; Wed 12 Aug", name:"Trier (Porta Nigra)", addr:"Porta Nigra, Simeonstrasse 60, 54290 Trier", lat:49.7596, lng:6.6440, alt:false},
-    {n:"2", label:"Night 2 &middot; Thu 13 Aug", name:"Strasbourg (cathedral)", addr:"Place de la Cathedrale, 67000 Strasbourg", lat:48.5819, lng:7.7509, alt:false},
-    {n:"3", label:"Nights 3 and 4 &middot; Fri 14 and Sat 15 Aug", name:"Domaine Barm&egrave;s-Buecher, Wettolsheim", addr:"30 Rue Sainte-Gertrude, 68920 Wettolsheim", lat:48.0557, lng:7.2929, alt:false,
+    {n:"S", label:"Start and finish &middot; Wed 12 and Sun 16 Aug", name:"Home, Den Bosch", addr:"Vughterstraat 130, 5211 GJ 's-Hertogenbosch", lat:51.6850, lng:5.2970, alt:false, zone:"none"},
+    {n:"1", label:"Nights 1 and 2 &middot; Wed 12 and Thu 13 Aug", name:"Camping Zum F&auml;hrturm, Schweich", addr:"Am Yachthafen, 54338 Schweich an der Mosel", lat:49.8283, lng:6.7411, alt:false, zone:"mosel"},
+    {n:"2", label:"Stop &middot; Fri 14 Aug, lunch and afternoon", name:"Strasbourg (cathedral)", addr:"Place de la Cathedrale, 67000 Strasbourg", lat:48.5819, lng:7.7509, alt:false, zone:"none"},
+    {n:"3", label:"Nights 3 and 4 &middot; Fri 14 and Sat 15 Aug", name:"Domaine Barm&egrave;s-Buecher, Wettolsheim", addr:"30 Rue Sainte-Gertrude, 68920 Wettolsheim", lat:48.0557, lng:7.2929, alt:false, zone:"alsace",
      mapsUrl:"https://www.google.com/maps/place//data=!4m2!3m1!1s0x47916469a9fc5795:0x1546731ae0094504"},
-    {n:"F", label:"Finish &middot; Sun 16 Aug", name:"Home, Den Bosch", addr:"Vughterstraat 130, 5211 GJ 's-Hertogenbosch", lat:51.6850, lng:5.2970, alt:false, noMarker:true},
-    {n:"a", label:"Detour &middot; prettiest village, 5 min away", name:"Eguisheim", addr:"Grand Rue, 68420 Eguisheim", lat:48.0433, lng:7.3067, alt:true},
-    {n:"b", label:"Detour &middot; Sat morning", name:"Colmar (Petite Venise)", addr:"Petite Venise, 68000 Colmar", lat:48.0740, lng:7.3585, alt:true},
-    {n:"c", label:"Detour &middot; Route des Vins", name:"Kaysersberg", addr:"68240 Kaysersberg", lat:48.1383, lng:7.2647, alt:true},
-    {n:"d", label:"Detour &middot; 40 min from Colmar", name:"Chateau du Haut-Koenigsbourg", addr:"Chateau du Haut-Koenigsbourg, 67600 Orschwiller", lat:48.2494, lng:7.3444, alt:true}
+    {n:"F", label:"Finish &middot; Sun 16 Aug", name:"Home, Den Bosch", addr:"Vughterstraat 130, 5211 GJ 's-Hertogenbosch", lat:51.6850, lng:5.2970, alt:false, noMarker:true, zone:"none"},
+
+    {n:"t", label:"20 min from camp &middot; Wed evening", name:"Trier, Porta Nigra", addr:"Porta Nigra, Simeonstrasse 60, 54290 Trier", lat:49.7596, lng:6.6440, alt:true, zone:"mosel"},
+    {n:"w", label:"Walk &middot; Thu morning, from the campsite", name:"Rundweg Moselblick (R4), Schweich", addr:"Bahnhofstrasse, 54338 Schweich", lat:49.8210, lng:6.7530, alt:true, zone:"mosel"},
+    {n:"e", label:"Wine &middot; 5 min from camp", name:"Longuich (Longen-Schl&ouml;der, Alte Burg)", addr:"Burgstrasse 3, 54340 Longuich", lat:49.8378, lng:6.8006, alt:true, zone:"mosel"},
+    {n:"f", label:"Wine &middot; 25 min from camp", name:"Leiwen (Carl Loewen, Grans-Fassian)", addr:"Matthiasstrasse 30, 54340 Leiwen", lat:49.8153, lng:6.8867, alt:true, zone:"mosel"},
+    {n:"g", label:"Wine &middot; 45 min, 100 wines in one cellar", name:"Vinothek St. Nikolaus-Hospital, Bernkastel-Kues", addr:"Cusanusstrasse 2, 54470 Bernkastel-Kues", lat:49.9153, lng:7.0742, alt:true, zone:"mosel"},
+
+    {n:"h", label:"Wine &middot; Sat, 2 min from base", name:"Schoepfer-Muller, Wettolsheim", addr:"4 route du Vin, 68920 Wettolsheim", lat:48.0588, lng:7.2955, alt:true, zone:"alsace"},
+    {n:"a", label:"Wine &middot; Sat, 5 min &middot; open on the holiday", name:"Wolfberger caveau, Eguisheim", addr:"6 Grand Rue, 68420 Eguisheim", lat:48.0430, lng:7.3058, alt:true, zone:"alsace"},
+    {n:"b", label:"Detour &middot; Sat morning", name:"Colmar (Petite Venise)", addr:"Petite Venise, 68000 Colmar", lat:48.0740, lng:7.3585, alt:true, zone:"alsace"},
+    {n:"c", label:"Detour &middot; Route des Vins", name:"Kaysersberg", addr:"68240 Kaysersberg", lat:48.1383, lng:7.2647, alt:true, zone:"alsace"},
+    {n:"d", label:"Detour &middot; 40 min from Colmar", name:"Chateau du Haut-Koenigsbourg", addr:"Chateau du Haut-Koenigsbourg, 67600 Orschwiller", lat:48.2494, lng:7.3444, alt:true, zone:"alsace-wide"}
   ];
 
   /* Tabs. De kaarten staan bewust bóven de tabs, want een Leaflet-kaart die in
@@ -787,9 +910,10 @@
   (function(){
     try {
       draw('map', stops.filter(function(s){return !s.alt;}), true);
-      draw('map-alsace', stops.filter(function(s){return s.alt || s.n === "3";}), false);
+      draw('map-mosel', stops.filter(function(s){return s.zone === "mosel";}), false);
+      draw('map-alsace', stops.filter(function(s){return s.zone === "alsace";}), false);
     } catch(e){
-      ['map','map-alsace'].forEach(function(id){
+      ['map','map-mosel','map-alsace'].forEach(function(id){
         var el = document.getElementById(id);
         if(el) el.innerHTML =
           '<div style="padding:40px;text-align:center;color:#5b544c;font-size:14px;">'
